@@ -1,7 +1,8 @@
-VoteSquaredHomePage
+VoteSquared
 ===================
 
-The chef repository for Vote Squared's platform ( VoteSquared.org ).
+The rails repository for Vote Squared's platform ( VoteSquared.org ).
+
 Requirements
 ------------
 Platforms:
