@@ -1,0 +1,3 @@
+== README
+
+As this is being stored in GitHub, please see the README.md file instead.
