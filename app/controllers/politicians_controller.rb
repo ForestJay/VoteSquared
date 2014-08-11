@@ -1,5 +1,7 @@
 class PoliticiansController < ApplicationController
-end
+  def new
+  end
 
-def new
+  def create
+  end
 end
