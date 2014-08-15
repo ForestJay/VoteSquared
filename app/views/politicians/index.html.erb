@@ -1,0 +1,19 @@
+<h1>Listing politicians</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Country</th>
+    <th>State</th>
+    <th>Current Office</th>
+  </tr>
+ 
+  <% @politicians.each do |politician| %>
+    <tr>
+      <td><%= politician.first_name %> <%= politician.last_name %></td>
+      <td><%= politician.country %></td>
+      <td><%= politician.state %></td>
+      <td><%= politician.current_office %></td>
+    </tr>
+  <% end %>
+</table>
