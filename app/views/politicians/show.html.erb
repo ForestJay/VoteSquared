@@ -15,4 +15,4 @@
   <%= @politician.current_office %>
 </p>
 
-<%= link_to 'Back', politicians_path %> <%= link_to 'Edit', edit_politician_path(@politician) %>
+<%= link_to 'Back', politicians_path %> <%= link_to 'Edit', edit_politician_path(@politician) %> <%= link_to 'Delete', politician_path(@politician), method: :delete, data: { confirm: 'Are you sure?  This cannot be undone!' } %>

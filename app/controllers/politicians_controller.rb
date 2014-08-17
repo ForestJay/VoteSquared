@@ -35,6 +35,13 @@ class PoliticiansController < ApplicationController
     end
   end
   
+  def destroy
+    @politician = Politician.find(params[:id])
+    @politician.destroy
+   
+    redirect_to articles_path
+  end
+  
   # Private members
   private
   
