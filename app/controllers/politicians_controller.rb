@@ -1,12 +1,16 @@
 class PoliticiansController < ApplicationController
   def new
+    @politician = Politician.new
   end
 
   def create
     @politician = Politician.new(politician_params)
     
-     @politician.save
-     redirect_to @politician
+    if @politician.save
+      redirect_to @politician
+    else
+      render 'new'
+    end
   end
   
   def show
