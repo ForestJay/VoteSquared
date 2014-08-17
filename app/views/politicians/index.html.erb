@@ -14,6 +14,8 @@
       <td><%= politician.country %></td>
       <td><%= politician.state %></td>
       <td><%= politician.current_office %></td>
+      <td><%= link_to 'View', politician_path(politician) %></td>
+      <td><%= link_to 'Edit', edit_politician_path(politician) %></td>
     </tr>
   <% end %>
 </table>

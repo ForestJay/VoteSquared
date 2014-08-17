@@ -13,12 +13,26 @@ class PoliticiansController < ApplicationController
     end
   end
   
+  def edit 
+    @politician = Politician.find(params[:id])
+  end
+  
   def show
     @politician = Politician.find(params[:id])
   end
   
   def index
     @politicians = Politician.all
+  end
+  
+  def update
+    @politician = Politician.find(params[:id])
+   
+    if @politician.update(politician_params)
+      redirect_to @politician
+    else
+      render 'edit'
+    end
   end
   
   # Private members
