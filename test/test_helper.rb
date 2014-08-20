@@ -6,5 +6,18 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  # Drop all collections after each test case.
+  def teardown
+    MongoMapper.database.collections.each do |coll|
+      coll.remove
+    end
+  end
+ 
+ # Make sure that each test case has a teardown
+ # method to clear the db after each test.
+ def inherited(base)
+   base.define_method :teardown do
+     super
+   end
+ end
 end
