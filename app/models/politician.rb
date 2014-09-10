@@ -6,6 +6,7 @@ class Politician
   key :country, String
   key :state, String
   key :current_office, String
+  key :candidate_for, String
   
   validates :first_name, presence: true,
                       length: { minimum: 2 }
