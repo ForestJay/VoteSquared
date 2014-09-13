@@ -1,4 +1,4 @@
-<link rel="import" href="top.html">
+<%= render :partial => "shared/top" %>
 
 <h1>Listing politicians</h1>
  
@@ -23,3 +23,5 @@
 </table>
 
 <p><center><%= link_to 'New politician', new_politician_path %></center>
+
+<%= render :partial => "shared/bottom" %>
