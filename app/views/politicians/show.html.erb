@@ -1,3 +1,4 @@
+<%= render :partial => "shared/top" %>
 <p>
   <%= @politician.first_name %> <%= @politician.last_name %>
 </p>
@@ -15,4 +16,5 @@
   <%= @politician.current_office %>
 </p>
 
-<%= link_to 'Back', politicians_path %> <%= link_to 'Edit', edit_politician_path(@politician) %> <%= link_to 'Delete', politician_path(@politician), method: :delete, data: { confirm: 'Are you sure?  This cannot be undone!' } %>
+<%= link_to 'Back', politicians_path %> <%= link_to 'Edit', edit_politician_path(@politician) %> <%= link_to 'Delete', politician_path(@politician), method: :delete, data: { confirm: 'Are you sure?  This cannot be undone!  If this is a real politician please leave them.' } %>
+<%= render :partial => "shared/bottom" %>
