@@ -8,6 +8,7 @@
     <th>Country</th>
     <th>State</th>
     <th>Current Office</th>
+    <th>Candidate For</th>
   </tr>
  
   <% @politicians.each do |politician| %>
@@ -16,6 +17,7 @@
       <td><%= politician.country %></td>
       <td><%= politician.state %></td>
       <td><%= politician.current_office %></td>
+      <td><%= politician.candidate_for %></td>
       <td><%= link_to 'View', politician_path(politician) %></td>
       <td><%= link_to 'Edit', edit_politician_path(politician) %></td>
     </tr>
