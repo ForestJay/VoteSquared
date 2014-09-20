@@ -28,7 +28,7 @@ class PoliticiansController < ApplicationController
   def update
     @politician = Politician.find(params[:id])
    
-    if @politician.update(politician_params)
+    if @politician.update_attributes(politician_params)
       redirect_to @politician
     else
       render 'edit'
