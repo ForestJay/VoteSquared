@@ -5,6 +5,11 @@ require 'rubygems'
 require 'mongo'
 source 'http://gemcutter.org'
 
+# Gems for FB:
+gem 'omniauth-facebook'
+gem 'devise'
+gem 'mm-devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 gem 'mongo_mapper'
