@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   end
   
   def new
-    logger.debug "Processing the request..."
     user = User.find_by_gplus(params[:gplus])
     if user
       redirect_to root_url, notice: "You are already registered!"
