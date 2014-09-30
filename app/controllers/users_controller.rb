@@ -2,16 +2,10 @@ class UsersController < ApplicationController
   def login
   end
   
-  def new
-    user = User.find_by_gplus(params[:gplus])
-    if user
-      redirect_to root_url, notice: "You are already registered!"
-    else
-      @fullname = params[:fullname]
-      @gplusId = params[:gplus]
-      u = User.new(:name => params[:fullname], :gplus => params[:gplus])
-      u.save
-      redirect_to root_url, notice: "User with name #{@fullname} and Google+ ID #{@gplusId} has been successfully registered!"
-    end
+  def new(auth)
+    user.email = auth.info.email
+    user.password = Devise.friendly_token[0,20]
+    user.name = auth.info.name   # assuming the user model has a name
+    user.image = auth.info.image # assuming the user model has an image  
   end
 end

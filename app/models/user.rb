@@ -1,29 +1,40 @@
 class User
   include MongoMapper::Document
-  
+   
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
     :confirmable, :omniauthable, :omniauth_providers => [:facebook]
     
-  attr_accessible :gplus, :name
+  attr_accessible :gplus, :name, :encrypted_password
   
   key :name, String
-  key :gplus, String
-  key :country, String
-  key :state, String
-  
+  key :email, String
+  key :password, String
+  key :image, String
+  key :encrypted_password, String
+  key :confirmed_at, Boolean
+  key :confirmation_sent_at, Date
+  key :confirmation_token, String
+  key :zip, String
+    
   validates :name, presence: true,
                       length: { minimum: 2 }
-  validates :gplus, :uniqueness => true, presence: true,
+  validates :encrypted_password, :uniqueness => true, presence: true,
                       length: { minimum: 2 }
-  validates :country, presence: true
+  validates :zip, presence: true
   
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    user = where(:email => auth.info.email).first
+    if user.present?
+    else
+      user = User.new
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
-      user.image = auth.info.image # assuming the user model has an image
+      user.name = auth.info.name  
+      user.image = auth.info.image 
+      user.zip = auth.info.zip
+      user.save!
     end
+    return user
   end
 end

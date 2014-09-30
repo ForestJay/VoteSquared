@@ -4,11 +4,15 @@ VoteSquared::Application.routes.draw do
     
   devise_scope :users do
     get 'sign_out', :to => 'devise/sessions#destroy'
+    #get '/users/auth/facebook/callback', to: redirect('/accounts/auth/facebook/callback')
   end
     
   resources :users
 
   resources :politicians
+  
+  resources :omniauth_callbacks
+  resources :devise
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
