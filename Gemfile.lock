@@ -172,7 +172,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mm-devise
-  mongo_mapper
+  mongo_mapper (>= 0.13.0.beta2)
   omniauth-facebook
   rails (= 4.1.4)
   sass-rails (~> 4.0.3)

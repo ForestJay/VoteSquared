@@ -4,7 +4,6 @@ VoteSquared::Application.routes.draw do
     
   devise_scope :users do
     get 'sign_out', :to => 'devise/sessions#destroy'
-    #get '/users/auth/facebook/callback', to: redirect('/accounts/auth/facebook/callback')
   end
     
   resources :users

@@ -1,4 +1,5 @@
 <html>
+
 <head>
 <meta http-equiv="Content-Type"
 content="text/html; charset=iso-8859-1">
@@ -13,68 +14,25 @@ content="text/html; charset=iso-8859-1">
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "94a42e95-c00a-497f-9e4e-898c86e76270", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-
-  <script type="text/javascript">
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/client:plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-    
-    function signinCallback(authResult) {
-  var token = gapi.auth.getToken();
-  var accessToken = token.access_token;
-  if (authResult['access_token']) {
-    var accessUrl = 'https://www.googleapis.com/plus/v1/people/me?access_token=' + accessToken;
-    $.ajax({
-      type: 'GET',
-      url: accessUrl,
-      async: false,
-      contentType: 'application/json',
-      dataType: 'jsonp',
-      success: function(data) {
-        var originalImage = data.image.url;
-        var imageUrl = originalImage.slice(0, -2);
-        var gplusImage = imageUrl + "200";
-        $('#fullname').val(data.displayName);
-        $('#gplus').val(data.id);
-        $('.is-this-you').html("<h3>Is this you?</h3><img src='" + gplusImage + "'><br><h4>" + data.displayName + "</h4><br><input type='submit' value='Login or Register'>");
-      },
-      error: function(e) {
-        console.log(e);
-      }
-    });
-  } else if (authResult['error']) {
-    $('.is-this-you').html("<h4>Your request could not be completed at this time</h4>");
-  };
-}
-  </script>
-
 </head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0033FF" vlink="#0033AA" alink="#0033FF" topmargin="11" leftmargin="3" marginheight="11" marginwidth="3">
 
 <table width="100%">
  <tr>
    <td>
-    <center><p>Follow us on <a href="https://www.facebook.com/votesquared"><img src="http://votesquared.org/fb-logo.png" alt="Facebook"></a> <a href="https://twitter.com/VoteSquared"><img src="http://votesquared.org/twitter-logo.png" alt="Twitter"></a> <a href="https://plus.google.com/u/0/101694695851367916712"><img src="http://votesquared.org/g+-logo.png" alt="Google+"></a></center>
+    <p>Follow us on <a href="https://www.facebook.com/votesquared"><img src="http://votesquared.org/fb-logo.png" alt="Facebook"></a> <a href="https://twitter.com/VoteSquared"><img src="http://votesquared.org/twitter-logo.png" alt="Twitter"></a> <a href="https://plus.google.com/u/0/101694695851367916712"><img src="http://votesquared.org/g+-logo.png" alt="Google+"></a>
    </td>
 
-   <td> 
-    <span id="signinButton">
-      <span
-        class="g-signin"
-        data-callback="signinCallback"
-        data-clientid="600382349198-tbqbbqi61rf27gil600abjb2emskhhnf.apps.googleusercontent.com"
-        data-cookiepolicy="single_host_origin"
-        data-scope="profile email https://www.googleapis.com/auth/plus.login">
-      </span>
-    </span>
-    <%= form_tag(:controller => "users", :action => "new", :method => "post") do %>
-      <%= hidden_field_tag :fullname %>
-      <%= hidden_field_tag :gplus %>
+   <td align=right> 
+    <% if user_signed_in? %>
+     <!-- <%= logout_string = "Logout #{current_user.name}" %> -->
+     <%= link_to(logout_string, destroy_user_session_path, :method => :delete) %>      
+    <% else %>
+     <%= link_to('Login', user_omniauth_authorize_path(:facebook))  %>  
     <% end %>
    </td>
   </tr>
 </table>
 
-<body bgcolor="#FFFFFF" text="#000000" link="#0033FF" vlink="#0033AA" alink="#0033FF" topmargin="11" leftmargin="3" marginheight="11" marginwidth="3">
 <center><a href="http://votesquared.org"><img src="http://votesquared.org/Logo.png" width="400" height="100" alt="Vote Squared"></a></center>

@@ -8,4 +8,8 @@ class UsersController < ApplicationController
     user.name = auth.info.name   # assuming the user model has a name
     user.image = auth.info.image # assuming the user model has an image  
   end
+  
+  def destroy
+    sign_out
+  end
 end
