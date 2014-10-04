@@ -26,15 +26,18 @@ class User
     
   validates :name, presence: true,
                       length: { minimum: 2 }
-  validates :encrypted_password, :uniqueness => true, presence: true,
+  validates :encrypted_password, presence: true,
                       length: { minimum: 2 }
   validates :zip, presence: true
+  validates :email, :uniqueness => true, presence: true,
+                      length: { minimum: 4 }
   
   def self.from_omniauth(auth)
     user = where(:email => auth.info.email).first
+    
+    # user.destroy can be used here for testing new users.
+    
     if user.present?
-      # Try deleting the user . . . maybe the date format it was created with was bad!
-      #user.destroy
     else
       user = User.new
       user.email = auth.info.email

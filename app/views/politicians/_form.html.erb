@@ -45,9 +45,14 @@
     <%= f.label :current_office %><br>
     <%= f.select :current_office, @OFFICES %>
   </p>
-     
-  <p>
-    <%= f.submit %>
-  </p>
+  
+  <%= puts current_user.name %>
+  <%= f.hidden_field :last_edit_by, :value => current_user.name %>
+  
+  <% if user_signed_in? %>    
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
   
 <% end %>

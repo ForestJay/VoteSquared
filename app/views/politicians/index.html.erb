@@ -19,11 +19,15 @@
       <td><%= politician.current_office %></td>
       <td><%= politician.candidate_for %></td>
       <td><%= link_to 'View', politician_path(politician) %></td>
-      <td><%= link_to 'Edit', edit_politician_path(politician) %></td>
+      <% if user_signed_in? %>
+        <td><%= link_to 'Edit', edit_politician_path(politician) %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
 
-<p><center><%= link_to 'New politician', new_politician_path %></center>
+<% if user_signed_in? %>
+  <p><center><%= link_to 'New politician', new_politician_path %></center>
+<% end %>
 
 <%= render :partial => "shared/bottom" %>
