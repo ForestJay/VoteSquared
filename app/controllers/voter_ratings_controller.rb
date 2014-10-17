@@ -10,8 +10,7 @@ class VoterRatingsController < ApplicationController
     @voter_rating.voted_for = voter_rating_params["voted_for"]
     @voter_rating.promised = voter_rating_params["promised"]
     @voter_rating.achieved = voter_rating_params["achieved"]
-    puts "Saving!"
-    @voter_rating.save!
+    @voter_rating.save
     redirect_to politician_path(@politician)
   end
 
