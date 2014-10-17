@@ -1,6 +1,8 @@
 class User
   include MongoMapper::Document
   plugin MongoMapper::Plugins::IdentityMap
+  
+  many :voter_ratings
    
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,

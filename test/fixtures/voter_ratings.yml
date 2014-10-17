@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rater: MyString
+  pros: MyText
+  politician_id: 
+
+two:
+  rater: MyString
+  pros: MyText
+  politician_id: 

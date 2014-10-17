@@ -44,3 +44,4 @@ config/secrets.yml
 
 # Ignore stupid Apple files
 .DS_Store
+/Forest

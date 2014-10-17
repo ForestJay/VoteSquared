@@ -6,9 +6,13 @@ VoteSquared::Application.routes.draw do
     get 'sign_out', :to => 'devise/sessions#destroy'
   end
     
-  resources :users
+  resources :users do
+    resources :voter_ratings
+  end
 
-  resources :politicians
+  resources :politicians do
+    resources :voter_ratings
+  end
   
   resources :omniauth_callbacks
   resources :devise
