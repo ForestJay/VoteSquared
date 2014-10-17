@@ -23,7 +23,7 @@
       <%= voter_rating.achieved %>
     </p>
   <% end %>
-  <% if user_signed_in? && current_user.id == voter_rating.user %>
+  <% if user_signed_in? && current_user.id == voter_rating.user_id %>
     <% has_rating = true %>
     <%= link_to 'Delete Rating', [voter_rating.politician, voter_rating],
                method: :delete,

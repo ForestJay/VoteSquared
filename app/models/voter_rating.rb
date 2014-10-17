@@ -12,7 +12,7 @@ class VoterRating
   key :voted_for, Boolean, :default => false
   key :promised, String
   key :achieved, String
-  key :user, ObjectId
+  key :user_id, ObjectId
   
   # For backwards compatibility with records that have no last edit value this is being left out for now.
   #   We might not ever want to re-add it!
@@ -34,8 +34,8 @@ class VoterRating
   end
   
   def user_name
-    @user_object = User.find(@user)
-    return @user_object.name
+    @user = User.find(@user_id)
+    return @user.name
   end
                         
 end

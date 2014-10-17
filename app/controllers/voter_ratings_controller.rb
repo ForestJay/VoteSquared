@@ -5,7 +5,7 @@ class VoterRatingsController < ApplicationController
     # There has to be a better way to get the data from params:
     @voter_rating.pros = voter_rating_params["pros"]
     @voter_rating.cons = voter_rating_params["cons"]
-    @voter_rating.user = current_user.id
+    @voter_rating.user_id = current_user.id
     @voter_rating.voter = voter_rating_params["voter"]
     @voter_rating.voted_for = voter_rating_params["voted_for"]
     @voter_rating.promised = voter_rating_params["promised"]
@@ -24,6 +24,6 @@ class VoterRatingsController < ApplicationController
   private
 
   def voter_rating_params
-    params.require(:voter_rating).permit(:user, :rating, :pros, :cons, :voter, :voted_for, :promised, :achieved)
+    params.require(:voter_rating).permit(:user_id, :rating, :pros, :cons, :voter, :voted_for, :promised, :achieved)
   end
 end
