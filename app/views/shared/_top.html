@@ -18,24 +18,33 @@ content="text/html; charset=iso-8859-1">
 
 <body bgcolor="#FFFFFF" text="#000000" link="#0033FF" vlink="#0033AA" alink="#0033FF" topmargin="11" leftmargin="3" marginheight="11" marginwidth="3">
 
-<table width="100%">
+<table width="100%" bgcolor="#E6E6E6">
  <tr>
    <td>
-    <p>Follow us on <a href="https://www.facebook.com/votesquared"><img src="http://votesquared.org/fb-logo.png" alt="Facebook"></a> <a href="https://twitter.com/VoteSquared"><img src="http://votesquared.org/twitter-logo.png" alt="Twitter"></a> <a href="https://plus.google.com/u/0/101694695851367916712"><img src="http://votesquared.org/g+-logo.png" alt="Google+"></a>
+     <center><a href="/"><img src="/LogoSmall.png" width="218" height="60" alt="Vote Squared"></a></center>
+   </td>
+ 
+   <td>
+     <center>
+       Follow us on<br>
+       <a href="https://www.facebook.com/votesquared"><img src="http://votesquared.org/fb-logo.png" alt="Facebook"></a> <a href="https://twitter.com/VoteSquared"><img src="http://votesquared.org/twitter-logo.png" alt="Twitter"></a> <a href="https://plus.google.com/u/0/101694695851367916712"><img src="http://votesquared.org/g+-logo.png" alt="Google+"></a>
+     </center>
    </td>
 
    <td align=right> 
-    <% if user_signed_in? %>
-     <!-- <%= logout_string = "Logout #{current_user.name}" %> -->
-     <%= link_to(logout_string, destroy_user_session_path, :method => :delete) %>      
-    <% else %>
-     <%= link_to('Login', user_omniauth_authorize_path(:facebook))  %>  
-    <% end %>
+    <center>
+      <% if user_signed_in? %>
+       <!-- <%= logout_string = "Logout<br>#{current_user.name}".html_safe %> -->
+       <%= link_to(logout_string, destroy_user_session_path, :method => :delete) %>      
+      <% else %>
+       <%= link_to('Login', user_omniauth_authorize_path(:facebook))  %>  
+      <% end %>
+    </center>
    </td>
   </tr>
 </table>
-<table width="100%">
-  <td width=5 bgcolor="#9F81F7">
+
+<table width="100%" border=0 cellspacing=0>
+  <td width=5 bgcolor="#9F81F7" border=0>
   </td>
-  <td>
-    <center><a href="http://votesquared.org"><img src="/Logo.png" width="400" height="110" alt="Vote Squared"></a></center>
+  <td border=0>

@@ -26,13 +26,17 @@
   <%= @politician.last_edit_by %>
 </p>
 
-<%= link_to 'Back', politicians_path %> 
-<% if user_signed_in? %>
-  <%= link_to 'Edit', edit_politician_path(@politician) %> <%= link_to 'Delete', politician_path(@politician), method: :delete, data: { confirm: "Are you sure #{current_user.name}?  This cannot be undone!  If this is a real politician please leave them." } %>
-<% end %>
+<center>
+  <%= link_to 'Back', politicians_path %>  
+  <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_politician_path(@politician) %> <%= link_to 'Delete', politician_path(@politician), method: :delete, data: { confirm: "Are you sure #{current_user.name}?  This cannot be undone!  If this is a real politician please leave them." } %>
+  <% end %>
+</center>
 
 <%= render "voter_ratings/show" %>
 
-<%= link_to 'Back', politicians_path %> 
+<p>
+
+<center><%= link_to 'Back', politicians_path %></center>
 
 <%= render "shared/bottom" %>
