@@ -47,6 +47,7 @@ class User
       user.name = auth.info.name  
       user.image = auth.info.image 
       user.zip = auth.info.zip
+      user.skip_confirmation!
       user.save!
     end
     return user
