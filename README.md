@@ -17,9 +17,9 @@ App Server:
 
 Installation Steps
 ------------------
-1: Clone the repository
-2: Run update.sh to install the required gems
-3: You will need devise.rb in config/initializers .  To create it, comment out devise code and run 'rails generate devise:install'.  Restore devise code to prevent crashes.
+1. Clone the repository
+2. Run update.sh to install the required gems
+3. You will need devise.rb in config/initializers .  To create it, comment out devise code and run 'rails generate devise:install'.  Restore devise code to prevent crashes.
 
 License & Authors
 -----------------
