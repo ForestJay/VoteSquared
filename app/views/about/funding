@@ -1,5 +1,5 @@
 <%= render "shared/top" %>
-
+<title>Funding</title>
 <h1>Funding</h1>
 
 <p>All of the costs for Vote Squared are currently being paid for by Forest Handford.  As the site (and costs) grow, we will look for additional funds.  We would like to get some early funds from KickStarter.  Overtime, we would like to collect donations from users to cover the costs.</p>

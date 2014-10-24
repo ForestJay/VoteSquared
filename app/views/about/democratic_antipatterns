@@ -1,5 +1,5 @@
 <%= render "shared/top" %>
-
+<title>Democratic Anti-patterns</title>
 <h1>Democratic Anti-patterns</h1>
 
 <ol>
