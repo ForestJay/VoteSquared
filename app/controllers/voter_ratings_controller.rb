@@ -10,6 +10,10 @@ class VoterRatingsController < ApplicationController
     @voter_rating.voted_for = voter_rating_params["voted_for"]
     @voter_rating.promised = voter_rating_params["promised"]
     @voter_rating.achieved = voter_rating_params["achieved"]
+      
+    current_user.add_points(5)
+    flash[:notice] = "Thank you, you've earned 5 points!"
+    
     @voter_rating.save
     redirect_to politician_path(@politician)
   end
@@ -18,9 +22,11 @@ class VoterRatingsController < ApplicationController
     @politician = Politician.find(params[:politician_id])
     @voter_rating = @politician.voter_ratings.find(params[:id])
     @voter_rating.destroy
+    current_user.add_points(-5)
     redirect_to politician_path(@politician)
   end
   
+  # Private members
   private
 
   def voter_rating_params

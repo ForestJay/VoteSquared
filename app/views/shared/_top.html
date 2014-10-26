@@ -38,7 +38,7 @@
    <td align=right> 
     <center>
       <% if user_signed_in? %>
-       <!-- <%= logout_string = "Logout<br>#{current_user.name}".html_safe %> -->
+       <!-- <%= logout_string = "Logout<br>#{current_user.display}".html_safe %> -->
        <%= link_to(logout_string, destroy_user_session_path, :method => :delete) %>      
       <% else %>
        <%= link_to('Login', user_omniauth_authorize_path(:facebook))  %>  
@@ -48,7 +48,12 @@
   </tr>
 </table>
 
-<table width="100%" border=0 cellspacing=0>
+<table width="100%" border=0 cellspacing=0 class="main_body">
   <td width=5 bgcolor="#9F81F7" border=0>
   </td>
   <td border=0>
+    <% if flash[:notice] %>
+      <a href="#" onclick="document.self.style.display = 'none'">
+      <table align="center"><td style="background: pink;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;"><%= flash[:notice] %></td></table>
+      </a>
+    <% end %>

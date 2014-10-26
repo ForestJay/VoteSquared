@@ -33,9 +33,13 @@ class VoterRating
     return str.html_safe
   end
   
-  def user_name
+  def user_display
     @user = User.find(@user_id)
-    return @user.name
+    if defined?(@user_id)
+      return @user.display
+    else
+      " "
+    end
   end
                         
 end

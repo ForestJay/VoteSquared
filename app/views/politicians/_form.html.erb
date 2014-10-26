@@ -46,7 +46,7 @@
     <%= f.select :current_office, @OFFICES %>
   </p>
   
-  <%= f.hidden_field :last_edit_by, :value => current_user.name %>
+  <%= f.hidden_field :last_edit_user_id, :value => current_user.id %>
   
   <% if user_signed_in? %>    
     <p>

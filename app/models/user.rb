@@ -8,8 +8,8 @@ class User
     :recoverable, :rememberable, :trackable, :validatable,
     :confirmable, :omniauthable, :omniauth_providers => [:facebook]
     
-  attr_accessible :email, :name, :encrypted_password, :confirmed_at
-  
+  attr_accessible :email, :name, :encrypted_password, :confirmed_at, :points
+   
   key :name, String
   key :email, String
   key :password, String
@@ -25,6 +25,7 @@ class User
   key :last_sign_in_ip, String
   key :sign_in_count, Integer
   key :remember_created_at, Time
+  key :points, Integer
     
   validates :name, presence: true,
                       length: { minimum: 2 }
@@ -33,6 +34,7 @@ class User
   validates :zip, presence: true
   validates :email, :uniqueness => true, presence: true,
                       length: { minimum: 4 }
+  validates :points, numericality: { only_integer: true }
   
   def self.from_omniauth(auth)
     user = where(:email => auth.info.email).first
@@ -47,9 +49,28 @@ class User
       user.name = auth.info.name  
       user.image = auth.info.image 
       user.zip = auth.info.zip
+      user.points = 0
       user.skip_confirmation!
       user.save!
     end
     return user
+  end
+  
+  def add_points(new_points)
+    if ! defined?(@points)
+      @points = 0
+    end
+    @points += new_points
+    self.save!
+  end
+  
+  def display
+    if ! defined?(@name)
+      return " "
+    elsif defined?(@points)
+      return "<table><tr><td>#{@name}</td></tr><tr><td align=center>#{@points.to_s}</td></tr></table>"
+    else
+      return @name
+    end
   end
 end

@@ -8,6 +8,8 @@ class PoliticiansController < ApplicationController
     
     if @politician.save
       redirect_to @politician
+      flash[:notice] = "Thank you, you've earned 10 points!"
+      current_user.add_points(10)
     else
       render 'new'
     end
@@ -27,7 +29,12 @@ class PoliticiansController < ApplicationController
   
   def update
     @politician = Politician.find(params[:id])
-   
+
+    if @politician.last_edit_user_id != current_user.id
+      flash[:notice] = "Thank you, you've earned 1 point!"
+      current_user.add_points(1)
+    end
+
     if @politician.update_attributes(politician_params)
       redirect_to @politician
     else
@@ -38,14 +45,18 @@ class PoliticiansController < ApplicationController
   def destroy
     @politician = Politician.find(params[:id])
     @politician.destroy
+    if @politician.last_edit_user_id == current_user.id
+      flash[:notice] = "You've lost 10 points!"
+      current_user.add_points(-10)
+    end
    
-    redirect_to articles_path
+    redirect_to politicians_path
   end
   
   # Private members
   private
   
   def politician_params
-    params.require(:politician).permit(:first_name, :last_name, :country, :state, :current_office, :candidate_for, :last_edit_by, :voter_ratings)
+    params.require(:politician).permit(:first_name, :last_name, :country, :state, :current_office, :candidate_for, :last_edit_user_id, :voter_ratings)
   end
 end

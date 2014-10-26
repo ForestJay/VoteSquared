@@ -11,7 +11,7 @@ class Politician
   key :state, String
   key :current_office, String
   key :candidate_for, String
-  key :last_edit_by, String
+  key :last_edit_user_id, ObjectId
   
   
   validates :first_name, presence: true,
@@ -20,6 +20,18 @@ class Politician
                       length: { minimum: 2 }
   validates :country, presence: true
 
-  validates :last_edit_by, presence: true,
+  validates :last_edit_user_id, presence: true,
                       length: { minimum: 2 }
+                        
+  def last_edit_user
+    @user = User.find(@last_edit_user_id)
+    if @user.nil?
+      return " " 
+    elsif defined?(@user)
+      return @user.display
+    else
+      return " "
+    end
+    
+  end
 end
