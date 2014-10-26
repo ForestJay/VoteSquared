@@ -28,10 +28,14 @@
 </p>
 
 <center>
-  <%= link_to 'Back', politicians_path %> <%= link_to 'Edit', edit_politician_path(@politician) %> 
-  <% if ! defined?(current_user.points) %>  
-  <% elsif user_signed_in? && (current_user.points > 20) %>
-    <%= link_to 'Delete', politician_path(@politician), method: :delete, data: { confirm: "Are you sure #{current_user.name}?  This cannot be undone and will cost you 10 points!  If this is a real politician please leave them!" } %>
+  <%= link_to 'Back', politicians_path %> 
+  <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_politician_path(@politician) %> 
+    <% if defined?(current_user.points) && ! current_user.points.nil? %>  
+      <% if current_user.points > 20 %>
+        <%= link_to 'Delete', politician_path(@politician), method: :delete, data: { confirm: "Are you sure #{current_user.name}?  This cannot be undone and will cost you 10 points!  If this is a real politician please leave them!" } %>
+      <% end %>
+    <% end %>
   <% end %>
 </center>
 
