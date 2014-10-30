@@ -31,7 +31,7 @@
   <% end %>
 <% end %>
 <% if user_signed_in? && ! has_rating %>
-  <h2>Add a rating:</h2>
+  <h2><a name="add_rating">Add a rating:</a></h2>
   <%= form_for([@politician, @politician.voter_ratings.build]) do |f| %>
     <p>
       <%= f.label :rating %><br>
@@ -46,7 +46,7 @@
       <%= f.text_area :cons %>
     </p>
     <p>
-      Are you a voter for this politician's district? (ie: can you or have you been able to vote for this person?)<br>
+      Are you a voter in this politicians district? (ie: can you or have you been able to vote for this person?)<br>
       Yes <%= f.radio_button :voter, true, checked:true, :onclick => "document.getElementById('voter_section').style.display = 'inline'" %>
       No <%= f.radio_button :voter, false , :onclick => "document.getElementById('voter_section').style.display = 'none'"%>
     </p>

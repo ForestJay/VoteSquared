@@ -30,12 +30,14 @@
 <center>
   <%= link_to 'Back', politicians_path %> 
   <% if user_signed_in? %>
-    <%= link_to 'Edit', edit_politician_path(@politician) %> 
+    <%= link_to 'Edit', edit_politician_path(@politician) %> <a href="#add_rating">Add Rating</a>
     <% if defined?(current_user.points) && ! current_user.points.nil? %>  
       <% if current_user.points > 20 %>
         <%= link_to 'Delete', politician_path(@politician), method: :delete, data: { confirm: "Are you sure #{current_user.name}?  This cannot be undone and will cost you 10 points!  If this is a real politician please leave them!" } %>
       <% end %>
     <% end %>
+  <% else %>
+    <%= link_to('Login to Rate or Edit', user_omniauth_authorize_path(:facebook))  %>
   <% end %>
 </center>
 

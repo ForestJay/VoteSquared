@@ -26,8 +26,12 @@
   <% end %>
 </table>
 
+<p><center>
 <% if user_signed_in? %>
-  <p><center><%= link_to 'New politician', new_politician_path %></center>
+  <%= link_to 'New politician', new_politician_path %>
+<% else %>
+  <%= link_to('Login to Add a Politician', user_omniauth_authorize_path(:facebook))  %>
 <% end %>
+</center>
 
 <%= render "shared/bottom" %>
