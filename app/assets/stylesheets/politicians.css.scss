@@ -2,7 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-input[type="text"],
+#field textarea {
+    width:200px;
+    height:20px;
+    padding: 3px;
+    }
+
 textarea {
     width:800px;
     height:80px;

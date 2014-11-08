@@ -1,0 +1,46 @@
+United States of America:
+  N/A:
+  
+  # Federal Positions
+  President:
+    level: "federal"
+  Vice President:
+    level: "federal"
+  Supreme Court Justice:
+    level: "federal"
+    
+  # State Positions
+  Governor:
+    level: "state"
+  Lieutenant Governor:
+    level: "state"
+  Secretary of State:
+    level: "state"
+  General Treasurer:
+    level: "state"
+  Senator:
+    level: "state"
+  U.S. Representative:
+    level: "state"
+    
+  # County Positions
+  Sheriff:
+    level: "county"
+  
+  # Local Positions
+  State Senator:
+    level: "local"
+  State Representative:
+    level: "local"
+    
+  # Town Positions
+  Town Counselor:
+    level: "town"
+  
+  # City Positions
+  City Counselor:
+    level: "city"
+  Mayor:
+    level: "city"
+  School Committee
+    level: "city"

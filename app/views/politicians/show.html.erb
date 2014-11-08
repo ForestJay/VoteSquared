@@ -10,6 +10,16 @@
   
   <strong>State:</strong>
   <%= @politician.state %>
+  
+  <% if @politician.county.length > 0 %>
+    <strong>County:</strong>
+    <%= @politician.county %>
+  <% end %>
+  
+  <% if @politician.city.length > 0 %>
+    <strong>City:</strong>
+    <%= @politician.city %>
+  <% end %>
 </p>
 
 <p>
