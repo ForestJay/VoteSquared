@@ -11,14 +11,18 @@
   <strong>State:</strong>
   <%= @politician.state %>
   
-  <% if @politician.county.length > 0 %>
-    <strong>County:</strong>
-    <%= @politician.county %>
+  <% if defined?(@politician.county.length) %>
+    <% if @politician.county.length > 0 %>
+      <strong>County:</strong>
+      <%= @politician.county %>
+    <% end %>
   <% end %>
   
-  <% if @politician.city.length > 0 %>
-    <strong>City:</strong>
-    <%= @politician.city %>
+  <% if defined?(@politician.city.length) %>
+    <% if @politician.city.length > 0 %>
+      <strong>City:</strong>
+      <%= @politician.city %>
+    <% end %>
   <% end %>
 </p>
 
@@ -40,7 +44,10 @@
 <center>
   <%= link_to 'Back', politicians_path %> 
   <% if user_signed_in? %>
-    <%= link_to 'Edit', edit_politician_path(@politician) %> <a href="#add_rating">Add Rating</a>
+    <a href="#add_rating">Add Rating</a>  
+    <% if current_user.points > 2 %>
+      <%= link_to 'Edit', edit_politician_path(@politician) %> 
+    <% end %>
     <% if defined?(current_user.points) && ! current_user.points.nil? %>  
       <% if current_user.points > 20 %>
         <%= link_to 'Delete', politician_path(@politician), method: :delete, data: { confirm: "Are you sure #{current_user.name}?  This cannot be undone and will cost you 10 points!  If this is a real politician please leave them!" } %>
