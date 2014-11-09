@@ -11,8 +11,13 @@
     <th>Candidate For</th>
   </tr>
  
+  <% row = 0 %>
   <% @politicians.each do |politician| %>
-    <tr>
+      <% if (row += 1) % 2 == 0 %>
+        <tr bgcolor=aquamarine>
+      <% else %>
+        <tr>
+      <% end %>
       <td><%= politician.first_name %> <%= politician.last_name %></td>
       <td><%= politician.country %></td>
       <td><%= politician.state %></td>

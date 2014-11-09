@@ -42,20 +42,32 @@
 </p>
 
 <center>
-  <%= link_to 'Back', politicians_path %> 
-  <% if user_signed_in? %>
-    <a href="#add_rating">Add Rating</a>  
-    <% if current_user.points > 2 %>
-      <%= link_to 'Edit', edit_politician_path(@politician) %> 
-    <% end %>
-    <% if defined?(current_user.points) && ! current_user.points.nil? %>  
-      <% if current_user.points > 20 %>
-        <%= link_to 'Delete', politician_path(@politician), method: :delete, data: { confirm: "Are you sure #{current_user.name}?  This cannot be undone and will cost you 10 points!  If this is a real politician please leave them!" } %>
-      <% end %>
-    <% end %>
-  <% else %>
-    <%= link_to('Login to Rate or Edit', user_omniauth_authorize_path(:facebook))  %>
-  <% end %>
+  <table cellspacing=10><tr>
+    <td>
+	  <%= link_to 'Back', politicians_path %> 
+	</td>
+	  <% if user_signed_in? %>
+	    <td>
+	      <a href="#add_rating">Add Rating</a>  
+	    </td>
+	    <% if current_user.points > 2 %>
+	      <td>
+	        <%= link_to 'Edit', edit_politician_path(@politician) %> 
+	      </td>
+	    <% end %>
+	    <% if defined?(current_user.points) && ! current_user.points.nil? %>  
+	      <% if current_user.points > 20 %>
+	        <td>
+	          <%= link_to 'Delete', politician_path(@politician), method: :delete, data: { confirm: "Are you sure #{current_user.name}?  This cannot be undone and will cost you 10 points!  If this is a real politician please leave them!" } %>
+	        </td>
+	      <% end %>
+	    <% end %>
+	  <% else %>
+	    <td>
+	      <%= link_to('Login to Rate or Edit', user_omniauth_authorize_path(:facebook))  %>
+	    </td>
+	  <% end %>
+  </tr></table>
 </center>
 
 <%= render "voter_ratings/show" %>
