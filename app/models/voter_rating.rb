@@ -25,9 +25,9 @@ class VoterRating
     str = " "
     (1..5).each do |i|
       if @rating >= i
-        str += "<img src=http://VoteSquared.org/Heart.png>"
+        str += "<img src=/Heart.png>"
       else
-        str += "<img src=http://VoteSquared.org/EmptyHeart.png>"
+        str += "<img src=/EmptyHeart.png>"
       end
     end
     return str.html_safe
@@ -40,6 +40,11 @@ class VoterRating
     else
       " "
     end
+  end
+  
+  def politician_link
+    @politician = Politician.find(@politician_id)
+    return "<a href=/politicians/#{politician_id}>#{@politician.first_name} #{@politician.last_name}</a>"
   end
                         
 end

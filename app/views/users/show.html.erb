@@ -1,0 +1,25 @@
+<%= render "shared/top" %>
+<title><%= @user.name %>'s Profile</title>
+<H1><%= @user.name %></H1> <img src=<%= @user.image %>>
+<p>
+  <strong>Points:</strong> <%= @user.points %>
+</p>
+<p>
+  <strong>Last Login:</strong> <%= @user.last_sign_in_at %>
+</p>
+<p>
+  <strong>Login Count:</strong> <%= @user.sign_in_count %>
+</p>
+<strong>User's Ratings:</strong>
+<table cellspacing=20 border=1>
+  <% @user.voter_ratings.each do |voter_rating| %>
+    <tr><td align=center>
+      <%= voter_rating.politician_link.html_safe %> <br>
+      <%= voter_rating.rating_html %>
+    </td></tr>
+  <% end %>
+</table>
+
+<center><a href="/">Home</a></center>
+
+<%= render "shared/bottom" %>

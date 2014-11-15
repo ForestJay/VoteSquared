@@ -25,7 +25,9 @@
       <td><%= politician.candidate_for %></td>
       <td><%= link_to 'View', politician_path(politician) %></td>
       <% if user_signed_in? %>
-        <td><%= link_to 'Edit', edit_politician_path(politician) %></td>
+        <% if current_user.points > 2 %>
+          <td><%= link_to 'Edit', edit_politician_path(politician) %></td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>

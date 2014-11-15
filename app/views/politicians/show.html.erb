@@ -1,8 +1,8 @@
 <%= render "shared/top" %>
 <title><%= @politician.first_name %> <%= @politician.last_name %>'s Ratings</title>
-<p>
+<H1>
   <%= @politician.first_name %> <%= @politician.last_name %>
-</p>
+</H1>
  
 <p>
   <strong>Country:</strong>
@@ -37,7 +37,7 @@
 </p>
 
 <p>
-  <strong>Last Edit by:</strong>
+  <strong>Last Edit by:</strong> 
   <%= @politician.last_edit_user.html_safe %>
 </p>
 

@@ -18,7 +18,6 @@ class User
   key :confirmed_at, Time
   key :confirmation_sent_at, Date
   key :confirmation_token, String
-  key :zip, String
   key :current_sign_in_at, Time
   key :last_sign_in_at, Time
   key :current_sign_in_ip, String
@@ -31,7 +30,6 @@ class User
                       length: { minimum: 2 }
   validates :encrypted_password, presence: true,
                       length: { minimum: 2 }
-  validates :zip, presence: true
   validates :email, :uniqueness => true, presence: true,
                       length: { minimum: 4 }
   validates :points, numericality: { only_integer: true }
@@ -48,7 +46,6 @@ class User
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name  
       user.image = auth.info.image 
-      user.zip = auth.info.zip
       user.points = 0
       user.skip_confirmation!
       user.save!
@@ -68,9 +65,10 @@ class User
     if ! defined?(@name)
       return " "
     elsif defined?(@points)
-      return "<table><tr><td>#{@name}</td></tr><tr><td align=center>#{@points.to_s}</td></tr></table>"
     else
-      return @name
+      @points = 0
+      self.save!
     end
+    return "<table><tr><td align=center><img src=#{self.image}></td><td><table><tr><td><a href=/users/#{self.id}>#{@name}</a></tr></td><tr><td align=center>#{@points.to_s}</td></tr></table></td></table>"
   end
 end
