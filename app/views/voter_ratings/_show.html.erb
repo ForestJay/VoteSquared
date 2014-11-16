@@ -31,6 +31,7 @@
   <% end %>
 <% end %>
 <% if user_signed_in? && ! has_rating %>
+  <script>document.getElementById('rating_link').style.display = 'inline'</script>
   <h2><a name="add_rating">Add a rating:</a></h2>
   <%= form_for([@politician, @politician.voter_ratings.build]) do |f| %>
     <p>
@@ -38,7 +39,7 @@
       <%= f.select :rating, [['1 heart',1], ['2 hearts',2], ['3 hearts',3], ['4 hearts',4], ['5 hearts',5]]  %>
     </p>
     <p>
-      <%= f.label :pros  %> (What do you like about them?)<br>
+      <%= f.label :pros %> (What do you like about them?)<br>
       <%= f.text_area :pros %>
     </p>
     <p>

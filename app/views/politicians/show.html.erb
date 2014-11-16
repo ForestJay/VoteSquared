@@ -1,4 +1,5 @@
 <%= render "shared/top" %>
+
 <title><%= @politician.first_name %> <%= @politician.last_name %>'s Ratings</title>
 <H1>
   <%= @politician.first_name %> <%= @politician.last_name %>
@@ -47,8 +48,8 @@
 	  <%= link_to 'Back', politicians_path %> 
 	</td>
 	  <% if user_signed_in? %>
-	    <td>
-	      <a href="#add_rating">Add Rating</a>  
+	    <td id='rating_link' style="display:none">
+	      <a href="#add_rating">Add Rating</a> 
 	    </td>
 	    <% if current_user.points > 2 %>
 	      <td>
