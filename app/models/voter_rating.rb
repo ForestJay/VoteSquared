@@ -35,10 +35,11 @@ class VoterRating
   
   def user_display
     @user = User.find(@user_id)
-    if defined?(@user_id)
+    
+    if defined?(@user_id) && ! @user.nil?
       return @user.display
     else
-      " "
+      return "Deleted User"
     end
   end
   

@@ -25,6 +25,7 @@ class User
   key :sign_in_count, Integer
   key :remember_created_at, Time
   key :points, Integer
+  key :sponsor, Boolean, :default => false
     
   validates :name, presence: true,
                       length: { minimum: 2 }
@@ -69,6 +70,21 @@ class User
       @points = 0
       self.save!
     end
-    return "<table><tr><td align=center><img src=#{self.image}></td><td><table><tr><td><a href=/users/#{self.id}>#{@name}</a></tr></td><tr><td align=center>#{@points.to_s}</td></tr></table></td></table>"
+    return_value = "<table><tr><td align=center><img src=#{self.image}></td><td><table><tr>"
+    return_value += "<td><a href=/users/#{self.id}>#{@name}</a></tr></td><tr><td align=center>#{@points.to_s}"
+    
+    if @sponsor == true
+      return_value += " <img src=/Halo.png width=12 height=12 alt='Sponsor Halo'>"
+    end
+    
+    return_value += "</td></tr></table></td></table>"
+    return return_value
+  end
+  
+  def is_admin
+    if self.id.to_s == ADMINS[self.id.to_s].to_s
+      return true
+    end
+    return false
   end
 end

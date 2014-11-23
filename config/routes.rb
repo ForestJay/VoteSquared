@@ -14,12 +14,12 @@ VoteSquared::Application.routes.draw do
     resources :voter_ratings
   end
   
-  resources :omniauth_callbacks
-  resources :devise
+  resources :omniauth_callbacks, :devise
   
   match '/about/community' => 'about#community', :via => [:get]
   match '/about/funding' => 'about#funding', :via => [:get]
   match '/about/democratic_antipatterns' => 'about#democratic_antipatterns', :via => [:get]
+  match '/users/:id/edit', to: 'users#update_custom', :via => [:patch]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
