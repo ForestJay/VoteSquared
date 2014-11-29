@@ -1,6 +1,6 @@
 <%= render "shared/top" %>
 <h1><img src=<%= @user.image %> align=center> Editing <%= @user.name %>'s Profile</h1>
-<%= puts users_path(@user) %>
+
 <%= form_for :users, method: :patch do |f| %>
   <%= f.label :sponsor %>
   <%= f.check_box :sponsor, {checked: @user.sponsor} %>
