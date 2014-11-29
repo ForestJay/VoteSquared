@@ -1,0 +1,38 @@
+<%= render "shared/top" %>
+  <%= form_for [@politician, @politician.voter_ratings.build], method: :patch, :url => edit_politician_voter_rating_path do |f| %>
+  
+    <p>
+      <%= f.label :rating %><br>
+      <%= f.select :rating, [['1 heart',1], ['2 hearts',2], ['3 hearts',3], ['4 hearts',4], ['5 hearts',5]], :selected => @voter_rating.rating %>
+    </p>
+    <p>
+      <%= f.label :pros %> (What do you like about them?)<br>
+      <%= f.text_area :pros, :value => @voter_rating.pros %>
+    </p>
+    <p>
+      <%= f.label :cons %> (How could they improve?)<br>
+      <%= f.text_area :cons, :value => @voter_rating.cons %>
+    </p>
+    <p>
+      Are you a voter in this politicians district? (ie: can you or have you been able to vote for this person?)<br>
+      Yes <%= f.radio_button :voter, ! @voter_rating.voter, :onclick => "document.getElementById('voter_section').style.display = 'inline'" %>
+      No <%= f.radio_button :voter, @voter_rating.voter, :onclick => "document.getElementById('voter_section').style.display = 'none'"%>
+    </p>
+    <p>
+      Have you voted for them?<br>
+      Yes <%= f.radio_button :voted_for, ! @voter_rating.voted_for %>
+      No <%= f.radio_button :voted_for, @voter_rating.voted_for %>
+    </p>
+    <p>
+      What have they promised?<br>
+      <%= f.text_area :promised, :value => @voter_rating.promised %>
+    </p>
+    <p>
+      What have they achieved?<br>
+      <%= f.text_area :achieved, :value => @voter_rating.achieved %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+<%= render "shared/bottom" %>

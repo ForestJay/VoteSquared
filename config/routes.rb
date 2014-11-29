@@ -20,6 +20,7 @@ VoteSquared::Application.routes.draw do
   match '/about/funding' => 'about#funding', :via => [:get]
   match '/about/democratic_antipatterns' => 'about#democratic_antipatterns', :via => [:get]
   match '/users/:id/edit', to: 'users#update_custom', :via => [:patch]
+  match '/politicians/:politician_id/voter_ratings/:id/edit', to: 'voter_ratings#update', :via => [:patch]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
