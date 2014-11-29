@@ -1,6 +1,7 @@
 <% has_rating = false %>
 <h2>Ratings</h2>
 <% @politician.voter_ratings.each do |voter_rating| %> 
+  <hr>
   <%= voter_rating.rating_html %>
   <p>
     <strong>Rater:</strong>
