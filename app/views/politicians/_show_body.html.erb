@@ -35,24 +35,28 @@
 
 </td>
 <td>
-<% if ! @politician.wikipedia_link.empty? %>
+<% if ! defined?(@politician.wikipedia_link.empty?) %> 
+<% elsif ! @politician.wikipedia_link.empty? %>
   <p>
     <center><strong><a href=https://en.wikipedia.org/wiki/<%= @politician.wikipedia_link %>>Wikipedia Page</a></strong></center>
   </p>
 <% end %>
 
-<% if ! @politician.campaign_link.empty? %>
+<% if ! defined?(@politician.campaign_link.empty?) %> 
+<% elsif ! @politician.campaign_link.empty? %>
   <p>
     <center><strong>Campaign Page: <a href=<%= @politician.campaign_link %>><%= @politician.campaign_link %></a></strong></center>
   </p>
 <% end %>
-<% if ! @politician.open_secrets_link.empty? %>
+<% if ! defined?(@politician.open_secrets_link.empty?) %> 
+<% elsif ! @politician.open_secrets_link.empty? %>
   <p>
     <center><strong><a href=https://www.opensecrets.org/politicians/summary.php?cid=<%= @politician.open_secrets_link %>>Open Secrets Page</a></strong></center>
   </p>
 <% end %>
 
-<% if ! @politician.official_link.empty? %>
+<% if ! defined?(@politician.wikipedia_link.empty?) %> 
+<% elsif ! @politician.wikipedia_link.empty? %>
   <p>
     <strong>Official Page: <a href=<%= @politician.official_link %>><%= @politician.official_link %></a></strong>
   </p>

@@ -78,7 +78,13 @@ class Politician
   end
   
   def has_social_links
-    if @google.empty? && @facebook.empty? && @twitter.empty?
+    if ! defined?(@google)
+      return false
+    elsif ! defined?(@facebook)
+      return false
+    elsif ! defined?(@twitter)
+      return false
+    elsif @google.empty? && @facebook.empty? && @twitter.empty?
       return false
     end
     return true
