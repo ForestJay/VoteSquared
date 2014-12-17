@@ -57,6 +57,6 @@ class PoliticiansController < ApplicationController
   private
   
   def politician_params
-    params.require(:politician).permit(:first_name, :last_name, :country, :state, :current_office, :candidate_for, :last_edit_user_id, :voter_ratings, :city, :county)
+    params.require(:politician).permit(:first_name, :last_name, :country, :state, :current_office, :candidate_for, :last_edit_user_id, :voter_ratings, :city, :county, :wikipedia_link, :campaign_link, :open_secrets_link, :official_link, :facebook, :google, :twitter)
   end
 end

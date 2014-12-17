@@ -14,6 +14,13 @@ class Politician
   key :last_edit_user_id, ObjectId
   key :city, String
   key :county, String
+  key :wikipedia_link, String
+  key :campaign_link, String
+  key :open_secrets_link, String
+  key :official_link, String
+  key :facebook, String
+  key :google, String
+  key :twitter, String
   
   
   validates :first_name, presence: true,
@@ -68,6 +75,12 @@ class Politician
     else
       return " "
     end
-    
+  end
+  
+  def has_social_links
+    if @google.empty? && @facebook.empty? && @twitter.empty?
+      return false
+    end
+    return true
   end
 end

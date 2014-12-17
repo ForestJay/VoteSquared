@@ -51,6 +51,46 @@
     <%= f.label :city %> <%= f.text_field :city %>
   </p>
   
+  <h2>Links</h2>
+  
+  <p class="field">
+    <b><%= f.label :wikipedia_link %>:</b><br>
+    https://en.wikipedia.org/wiki/<%= f.text_field :wikipedia_link %>
+  </p>
+  
+  <p class="field">
+    <b><%= f.label :campaign_link %>:</b><br>
+    <%= f.text_field :campaign_link %>
+  </p>
+  
+  <p class="field">
+    <b><%= f.label :open_secrets_link %>:</b><br>
+    https://www.opensecrets.org/politicians/summary.php?cid=<%= f.text_field :open_secrets_link %>
+  </p>
+  
+  <p class="field">
+    <b><%= f.label :official_link %>:</b><br>
+    <%= f.text_field :official_link %>
+  </p>
+  
+  <h2>Social Media</h2>
+  
+  <p class="field">
+    <b><%= f.label :facebook %>:</b><br>
+    https://www.facebook.com/<%= f.text_field :facebook %>
+  </p>
+  
+  <p class="field">
+    <b><%= f.label :google %>+ ID:</b><br>
+    https://plus.google.com/<%= f.text_field :google %>/posts
+  </p>
+  
+  <p class="field">
+    <b><%= f.label :twitter %> account:</b><br>
+    https://twitter.com/<%= f.text_field :twitter %>
+  </p>
+  
+  
   <%= f.hidden_field :last_edit_user_id, :value => current_user.id %>
   
   <% if user_signed_in? %>    

@@ -1,8 +1,63 @@
 <title><%= @politician.first_name %> <%= @politician.last_name %>'s Ratings</title>
-<H1>
+<H1 align=center>
   <%= @politician.first_name %> <%= @politician.last_name %>
 </H1>
- 
+<table align=center><tr cellspacing=20><td>
+<% if @politician.has_social_links %>
+  <table>
+    <th colspan=3>
+        <% if ! @politician.facebook.empty? %>
+          <img src=http://graph.facebook.com/<%= @politician.facebook %>/picture?type=square><br>
+        <% end %>
+      Social Links
+    </th>
+    <tr>
+    <% if ! @politician.facebook.empty? %>
+      <td>
+        <a href=https://www.facebook.com/<%= @politician.facebook %>><img src=/fb-logo.png></a>
+      </td>
+    <% end %>
+
+    <% if ! @politician.google.empty? %>
+      <td>
+        <a href=https://plus.google.com/<%= @politician.google %>/posts><img src=/g+-logo.png></a>
+      </td>
+    <% end %>
+  
+    <% if ! @politician.twitter.empty? %>
+      <td>
+        <a href=https://twitter.com/<%= @politician.twitter %>><img src=/twitter-logo.png></a>
+      </td>
+    <% end %>
+    </tr>
+  </table>
+<% end %>
+
+</td>
+<td>
+<% if ! @politician.wikipedia_link.empty? %>
+  <p>
+    <center><strong><a href=https://en.wikipedia.org/wiki/<%= @politician.wikipedia_link %>>Wikipedia Page</a></strong></center>
+  </p>
+<% end %>
+
+<% if ! @politician.campaign_link.empty? %>
+  <p>
+    <center><strong>Campaign Page: <a href=<%= @politician.campaign_link %>><%= @politician.campaign_link %></a></strong></center>
+  </p>
+<% end %>
+<% if ! @politician.open_secrets_link.empty? %>
+  <p>
+    <center><strong><a href=https://www.opensecrets.org/politicians/summary.php?cid=<%= @politician.open_secrets_link %>>Open Secrets Page</a></strong></center>
+  </p>
+<% end %>
+
+<% if ! @politician.official_link.empty? %>
+  <p>
+    <strong>Official Page: <a href=<%= @politician.official_link %>><%= @politician.official_link %></a></strong>
+  </p>
+<% end %> 
+
 <p>
   <strong>Country:</strong>
   <%= @politician.country %>
@@ -36,10 +91,10 @@
 </p>
 
 <p>
-  <strong>Last Edit by:</strong> 
-  <%= @politician.last_edit_user.html_safe %>
+  <table><td><strong>Last Edit by:</strong></td>
+  <td><%= @politician.last_edit_user.html_safe %></td></table>
 </p>
-
+</td></tr></table>
 <center>
   <table cellspacing=10><tr>
     <td>
