@@ -5,6 +5,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Rating</th>
     <th>Country</th>
     <th>State</th>
     <th>Current Office</th>
@@ -18,17 +19,12 @@
       <% else %>
         <tr>
       <% end %>
-      <td><%= politician.first_name %> <%= politician.last_name %></td>
+      <td><%= link_to politician.full_name, politician_path(politician) %></td>
+      <td><%= politician.rating_stats_html %></td>
       <td><%= politician.country %></td>
       <td><%= politician.state %></td>
       <td><%= politician.current_office %></td>
       <td><%= politician.candidate_for %></td>
-      <td><%= link_to 'View', politician_path(politician) %></td>
-      <% if user_signed_in? %>
-        <% if current_user.points > 2 %>
-          <td><%= link_to 'Edit', edit_politician_path(politician) %></td>
-        <% end %>
-      <% end %>
     </tr>
   <% end %>
 </table>

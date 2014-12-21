@@ -2,13 +2,20 @@
 <H1 align=center>
   <%= @politician.first_name %> <%= @politician.last_name %>
 </H1>
+
+<% if @politician.voter_ratings.any? %>
+  <center>
+    <%= @politician.rating_stats_html %>
+  </center>
+<% end %>
+
 <table align=center><tr cellspacing=20><td>
-<% if @politician.has_social_links %>
+<% if @politician.has_social_links? %>
   <table>
     <th colspan=3>
         <% if ! @politician.facebook.empty? %>
           <img src=http://graph.facebook.com/<%= @politician.facebook %>/picture?type=square><br>
-        <% end %>
+      <% end %>
       Social Links
     </th>
     <tr>
@@ -34,6 +41,9 @@
 <% end %>
 
 </td>
+
+<!--  Second Table Column     -->
+
 <td>
 <% if ! defined?(@politician.wikipedia_link.empty?) %> 
 <% elsif ! @politician.wikipedia_link.empty? %>

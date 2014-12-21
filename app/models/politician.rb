@@ -1,5 +1,6 @@
 class Politician
   include MongoMapper::Document
+  include RatingsHtml
   
   many :voter_ratings
   
@@ -77,7 +78,7 @@ class Politician
     end
   end
   
-  def has_social_links
+  def has_social_links?
     if ! defined?(@google)
       return false
     elsif ! defined?(@facebook)
@@ -88,5 +89,40 @@ class Politician
       return false
     end
     return true
+  end
+  
+  def rating_stats_html
+    if voter_ratings.none?
+      return "0 reviews"
+    end
+    
+    total = 0
+   
+    voter_ratings.each do |voter_rating|
+      total += voter_rating.rating
+    end
+    
+    avg = total.to_f / voter_ratings.count
+    fraction = avg.to_f - avg.to_i
+    
+    if fraction > 0.25 and fraction < 0.75
+      half = true
+    else
+      half = false
+    end
+    
+    if fraction > 0.75
+      avg += 1
+    end
+    
+    str = rating_hearts_html(avg,half)
+    str += " " + voter_ratings.count.to_s
+    str += " " + "review".pluralize(voter_ratings.count)
+    
+    return str.html_safe
+  end
+  
+  def full_name
+    return first_name + " " + last_name
   end
 end

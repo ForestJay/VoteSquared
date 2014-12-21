@@ -1,5 +1,6 @@
 class VoterRating
   include MongoMapper::Document
+  include RatingsHtml
   
   belongs_to :politician
   
@@ -22,15 +23,7 @@ class VoterRating
     presence: true, length: { maximum: 1 }
                         
   def rating_html
-    str = " "
-    (1..5).each do |i|
-      if @rating >= i
-        str += "<img src=/Heart.png>"
-      else
-        str += "<img src=/EmptyHeart.png>"
-      end
-    end
-    return str.html_safe
+    return rating_hearts_html(@rating,false).html_safe
   end
   
   def user_display

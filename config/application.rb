@@ -28,5 +28,7 @@ module VoteSquared
     config.generators do |g|
       g.orm :mongo_mapper
     end
+    
+    config.autoload_paths += %W(#{config.root}/lib) 
   end
 end
