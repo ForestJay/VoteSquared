@@ -93,7 +93,7 @@ class Politician
   
   def rating_stats_html
     if voter_ratings.none?
-      return "0 reviews"
+      return "0 ratings"
     end
     
     total = 0
@@ -117,7 +117,7 @@ class Politician
     
     str = rating_hearts_html(avg,half)
     str += " " + voter_ratings.count.to_s
-    str += " " + "review".pluralize(voter_ratings.count)
+    str += " " + "rating".pluralize(voter_ratings.count)
     
     return str.html_safe
   end
