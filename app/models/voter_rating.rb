@@ -4,6 +4,8 @@ class VoterRating
   
   belongs_to :politician
   
+  many :votes
+  
   attr_accessible :voter, :rating
   
   key :rating, Integer
@@ -27,18 +29,41 @@ class VoterRating
   end
   
   def user_display
+    user_value("display")
+  end
+
+  def user_name
+    user_value("name")
+  end
+  
+  def user_value(field)
     @user = User.find(@user_id)
     
     if defined?(@user_id) && ! @user.nil?
-      return @user.display
+      if field == "name"
+        return @user.name
+      elsif field == "display"
+        return @user.display
+      end
     else
       return "Deleted User"
     end
   end
-  
+    
   def politician_link
     @politician = Politician.find(@politician_id)
     return "<a href=/politicians/#{politician_id}>#{@politician.first_name} #{@politician.last_name}</a>"
+  end
+  
+  def total_votes
+    total_not_useful = 0
+    votes.each do |vote|
+      if ! vote.useful
+        total_not_useful += 1
+      end
+    end
+    
+    return votes.count - total_not_useful
   end
                         
 end

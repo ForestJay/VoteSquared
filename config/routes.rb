@@ -11,7 +11,9 @@ VoteSquared::Application.routes.draw do
   end
 
   resources :politicians do
-    resources :voter_ratings
+    resources :voter_ratings do
+      resources :votes
+    end
   end
   
   resources :omniauth_callbacks, :devise

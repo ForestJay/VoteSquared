@@ -3,6 +3,7 @@ class User
   plugin MongoMapper::Plugins::IdentityMap
   
   many :voter_ratings
+  many :votes
    
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,

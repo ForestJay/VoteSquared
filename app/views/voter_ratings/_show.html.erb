@@ -1,41 +1,49 @@
 <% has_rating = false %>
 <h2>Ratings</h2>
-<% @politician.voter_ratings.each do |voter_rating| %> 
+<% sorted_voters = @politician.voter_ratings.sort! { |a,b| b.total_votes <=> a.total_votes } %>
+<% sorted_voters.each do |voter_rating| %> 
   <hr>
-  <%= voter_rating.rating_html %>
-  <p>
-    <strong>Rater:</strong>
-    <%= voter_rating.user_display.html_safe %>
-  </p>
-  <p>
-    <strong>Pros:</strong>
-    <%= voter_rating.pros %>
-  </p>
-  <p>
-    <strong>Cons:</strong>
-    <%= voter_rating.cons %>
-  </p>
-  <% if voter_rating.voter %>
-    <strong>This rating is from a voter who was promised:</strong><br>
-      <%= voter_rating.promised %>
-    </p>
-    <p>
-      <strong>Felt the politician achieved:</strong><br>
-      <%= voter_rating.achieved %>
-    </p>
-  <% end %>
-  <% if user_signed_in? && current_user.id == voter_rating.user_id %>
-    <% has_rating = true %>
-    <table cellspacing=10><tr>
-      <td>
-        <%= link_to 'Delete Rating', [voter_rating.politician, voter_rating], 
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %>
-      </td><td>
-        <%= link_to 'Edit Rating', edit_politician_voter_rating_path(voter_rating.politician, voter_rating) %>
-      </td><br>
-    </table>
-  <% end %>
+  <table>
+    <td>
+      <%= link_to(raw("<img src=/UpVote.png alt='useful'>"), politician_voter_rating_votes_path(@politician,voter_rating), :method => :up_vote) %>
+      <center><strong><%= voter_rating.total_votes %></strong></center>
+      <%= link_to(raw("<img src=/DownVote.png alt='not useful'>"), politician_voter_rating_votes_path(@politician,voter_rating), :method => :down_vote) %>
+    </td>
+    <td>
+      <%= voter_rating.rating_html %>
+      <p>
+        <strong>Pros:</strong>
+        <%= voter_rating.pros %>
+      </p>
+      <p>
+        <strong>Cons:</strong>
+        <%= voter_rating.cons %>
+      </p>
+      <% if voter_rating.voter %>
+        <strong>This rating is from a voter who was promised:</strong><br>
+          <%= voter_rating.promised %>
+        </p>
+        <p>
+          <strong>Felt the politician achieved:</strong><br>
+          <%= voter_rating.achieved %>
+        </p>
+      <% end %>
+        <%= voter_rating.user_display.html_safe %>
+  
+      <% if user_signed_in? && current_user.id == voter_rating.user_id %>
+        <% has_rating = true %>
+        <table cellspacing=10><tr>
+          <td>
+            <%= link_to 'Delete Rating', [voter_rating.politician, voter_rating], 
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
+          </td><td>
+            <%= link_to 'Edit Rating', edit_politician_voter_rating_path(voter_rating.politician, voter_rating) %>
+          </td><br>
+        </table>
+      <% end %>
+    </td>
+  </table>
 <% end %>
 <% if user_signed_in? && ! has_rating %>
   <script>document.getElementById('rating_link').style.display = 'inline'</script>
