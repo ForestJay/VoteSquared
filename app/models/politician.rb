@@ -91,18 +91,27 @@ class Politician
     return true
   end
   
-  def rating_stats_html
+  def rating_avg
     if voter_ratings.none?
-      return "0 ratings"
+      return 0
     end
-    
+
     total = 0
    
     voter_ratings.each do |voter_rating|
       total += voter_rating.rating
     end
     
-    avg = total.to_f / voter_ratings.count
+    return total.to_f / voter_ratings.count
+  end
+  
+  def rating_stats_html
+    if voter_ratings.none?
+      return "0 ratings"
+    end
+    
+    avg = rating_avg
+    
     fraction = avg.to_f - avg.to_i
     
     if fraction > 0.25 and fraction < 0.75
