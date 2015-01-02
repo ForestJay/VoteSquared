@@ -91,6 +91,15 @@ class Politician
     return true
   end
   
+  def sort_value
+    if voter_ratings.none?
+      return 0
+    end
+    
+    avg = rating_avg
+    return avg * 100 + voter_ratings.count
+  end
+  
   def rating_avg
     if voter_ratings.none?
       return 0

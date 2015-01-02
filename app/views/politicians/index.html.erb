@@ -13,7 +13,7 @@
   </tr>
  
   <% row = 0 %>
-  <% sorted_politicians = @politicians.sort! { |a,b| b.rating_avg <=> a.rating_avg } %>
+  <% sorted_politicians = @politicians.sort! { |a,b| b.sort_value <=> a.sort_value } %>
   <% @politicians.each do |politician| %>
       <% if (row += 1) % 2 == 0 %>
         <tr bgcolor=aquamarine>
