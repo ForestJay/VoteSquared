@@ -31,6 +31,7 @@ pickle-email-*.html
 # Secrets should NEVER be committed!
 config/initializers/secret_token.rb
 config/initializers/devise.rb
+config/initializers/secrets.yml
 config/secrets.yml
 
 ## Environment normalisation:

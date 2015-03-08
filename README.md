@@ -21,6 +21,7 @@ Installation Steps
 2. Run update.sh to install the required gems
 3. You will need devise.rb in config/initializers .  To create it, comment out devise code and run 'rails generate devise:install'.  Restore devise code to prevent crashes.
 4. Create /congig/initializers/admins.yml .  Add the ids for your admins to this file.
+5. Create /congig/initializers/secrets.yml and place your SMTP settings for the environment configurations.
 
 License & Authors
 -----------------

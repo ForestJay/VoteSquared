@@ -1,7 +1,9 @@
 <%= render "shared/top" %>
 <title><%= @user.name %>'s Profile</title>
-<% if user_signed_in? && current_user.is_admin %>
-  <center><%= link_to 'Edit', edit_user_path(@user) %></center>
+<% if user_signed_in? %>
+  <% if current_user.is_admin or current_user.id == @user.id %>
+    <center><%= link_to 'Edit', edit_user_path(@user) %></center>
+  <% end %>
 <% end %>
 <H1><%= @user.name %></H1> <img src=<%= @user.image %>>
 <p>

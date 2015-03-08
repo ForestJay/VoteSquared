@@ -1,3 +1,5 @@
+EMAIL = YAML.load(File.read(File.expand_path("config/initializers/secrets.yml")))["email"]
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -34,4 +36,13 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              EMAIL["address"],
+    port:                 EMAIL["port"],
+    domain:               EMAIL["domain"],
+    user_name:            EMAIL["user_name"],
+    password:             EMAIL["password"],
+    authentication:       EMAIL["authentication"],
+    enable_starttls_auto: EMAIL["enable_starttls_auto"]  }
 end

@@ -27,6 +27,7 @@ class User
   key :remember_created_at, Time
   key :points, Integer
   key :sponsor, Boolean, :default => false
+  key :unsubscribe_all, Boolean, :default => false
     
   validates :name, presence: true,
                       length: { minimum: 2 }

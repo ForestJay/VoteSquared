@@ -30,5 +30,7 @@ module VoteSquared
     end
     
     config.autoload_paths += %W(#{config.root}/lib) 
+    
+    config.action_mailer.default_url_options = { host: 'VoteSquared.org' }
   end
 end
