@@ -11,6 +11,7 @@ VoteSquared::Application.routes.draw do
   end
 
   resources :politicians do
+    resources :watches
     resources :voter_ratings do
       resources :votes
     end

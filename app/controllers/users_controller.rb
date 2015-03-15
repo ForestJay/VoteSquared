@@ -1,3 +1,4 @@
+# Controller for users
 class UsersController < ApplicationController
   def login
   end

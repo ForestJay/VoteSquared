@@ -1,9 +1,11 @@
+# Model to store users
 class User
   include MongoMapper::Document
   plugin MongoMapper::Plugins::IdentityMap
   
   many :voter_ratings
   many :votes
+  many :watches
    
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,

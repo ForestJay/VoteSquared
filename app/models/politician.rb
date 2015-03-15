@@ -1,8 +1,10 @@
+# Model for storing politicians.
 class Politician
   include MongoMapper::Document
   include RatingsHtml
   
   many :voter_ratings
+  many :watches
   
   # New fields need to be added to the controller, the form, and here.
   
@@ -142,5 +144,14 @@ class Politician
   
   def full_name
     return first_name + " " + last_name
+  end
+  
+  def already_watching?(politician, user_id)
+    politician.watches.each do |watch|
+      if watch.watcher_id == user_id
+        return watch
+      end
+    end
+    return false
   end
 end

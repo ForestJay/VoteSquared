@@ -1,3 +1,4 @@
+# Model to store ratings from users.
 class VoterRating
   include MongoMapper::Document
   include RatingsHtml

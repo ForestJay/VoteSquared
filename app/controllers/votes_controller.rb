@@ -1,3 +1,4 @@
+# Controller for up and down voting a rating
 class VotesController < ApplicationController
   def create
     @voter_rating = VoterRating.find(params[:voter_rating_id])
@@ -35,13 +36,6 @@ class VotesController < ApplicationController
       end
     end
     return false
-  end
-  
-  def destroy
-    @voter_rating = VoterRating.find(params[:voter_rating_id])
-    @vote = @voter_rating.votes.create(votes_params)
-    @vote.destroy
-    redirect_to politician_path(@politician)
   end
   
   # Private members

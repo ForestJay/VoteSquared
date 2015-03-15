@@ -1,6 +1,11 @@
 <title><%= @politician.first_name %> <%= @politician.last_name %>'s Ratings</title>
 <H1 align=center>
-  <%= @politician.first_name %> <%= @politician.last_name %>
+  <%= @politician.first_name %> <%= @politician.last_name %> 
+  <% if @politician.already_watching?(@politician, current_user.id) %> 
+    <%= link_to(raw("<img src=/Unwatch.png alt='watch' align=right>"), politician_watches_path(@politician), :method => :create) %>
+  <% else %>
+    <%= link_to(raw("<img src=/watch.png alt='watch' align=right>"), politician_watches_path(@politician), :method => :create) %>
+  <% end %>
 </H1>
 
 <% if @politician.voter_ratings.any? %>
@@ -21,7 +26,7 @@
     <tr>
     <% if ! @politician.facebook.empty? %>
       <td>
-        <a href=https://www.facebook.com/<%= @politician.facebook %>><img src=/fb-logo.png></a>
+        <a href=https://www.facebook.com/<%= @politician.facebook %>><img alt="facebook" src=/fb-logo.png></a>
       </td>
     <% end %>
 

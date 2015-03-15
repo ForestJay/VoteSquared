@@ -1,3 +1,4 @@
+# Class for sending mail to users.
 class UserMailer < ActionMailer::Base
   default from: "no-reply@VoteSquared.org"
   
