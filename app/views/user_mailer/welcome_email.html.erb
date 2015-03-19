@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
+<%= render "html_header" %>
+
     <h1>Welcome to VoteSquared.org, <%= @user.name %>!</h1>
     <p>
       You have successfully signed up to <a href=http://VoteSquared.org>VoteSquared.org</a>.<br>
@@ -11,6 +7,5 @@
     <p>
       For details on how to use the site check-out <a href="https://www.youtube.com/watch?v=yPa2Qbm54fU">this video</a>.
     </p>
-    If you would like to stop receiving email from VoteSquared.org, <%= link_to 'unsubscribe here', edit_user_url(@user) %> .
-  </body>
-</html>
+    
+<%= render "html_footer" %>

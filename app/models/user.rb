@@ -78,7 +78,7 @@ class User
     return_value += "<td><a href=/users/#{self.id}>#{@name}</a></tr></td><tr><td align=center>#{@points.to_s}"
     
     if @sponsor == true
-      return_value += " <img src=/Halo.png width=12 height=12 alt='Sponsor Halo'>"
+      return_value += " <img src=http://votesquared.org/Halo.png width=12 height=12 alt='Sponsor Halo'>"
     end
     
     return_value += "</td></tr></table></td></table>"

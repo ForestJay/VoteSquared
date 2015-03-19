@@ -37,6 +37,12 @@ class PoliticiansController < ApplicationController
 
     if @politician.update_attributes(politician_params)
       redirect_to @politician
+      @politician.watches.each do |watch|
+        user = User.find(watch.watcher_id)
+        unless user.unsubscribe_all
+          UserMailer.watched_politician_update(@politician, user).deliver
+        end
+      end
     else
       render 'edit'
     end

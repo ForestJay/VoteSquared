@@ -1,119 +1,16 @@
 <title><%= @politician.first_name %> <%= @politician.last_name %>'s Ratings</title>
-<H1 align=center>
-  <%= @politician.first_name %> <%= @politician.last_name %> 
-  <% if @politician.already_watching?(@politician, current_user.id) %> 
-    <%= link_to(raw("<img src=/Unwatch.png alt='watch' align=right>"), politician_watches_path(@politician), :method => :create) %>
-  <% else %>
-    <%= link_to(raw("<img src=/watch.png alt='watch' align=right>"), politician_watches_path(@politician), :method => :create) %>
-  <% end %>
-</H1>
-
-<% if @politician.voter_ratings.any? %>
-  <center>
-    <%= @politician.rating_stats_html %>
-  </center>
-<% end %>
-
-<table align=center><tr cellspacing=20><td>
-<% if @politician.has_social_links? %>
-  <table>
-    <th colspan=3>
-        <% if ! @politician.facebook.empty? %>
-          <img src=http://graph.facebook.com/<%= @politician.facebook %>/picture?type=square><br>
-      <% end %>
-      Social Links
-    </th>
-    <tr>
-    <% if ! @politician.facebook.empty? %>
-      <td>
-        <a href=https://www.facebook.com/<%= @politician.facebook %>><img alt="facebook" src=/fb-logo.png></a>
-      </td>
+  <H1 align=center>
+    <%= @politician.first_name %> <%= @politician.last_name %> 
+    <% if user_signed_in? %>
+    <% elsif @politician.already_watching?(@politician, current_user.id) %> 
+      <%= link_to(raw("<img src=/Unwatch.png alt='watch' align=right>"), politician_watches_path(@politician), :method => :create) %>
+    <% else %>
+      <%= link_to(raw("<img src=/watch.png alt='watch' align=right>"), politician_watches_path(@politician), :method => :create) %>
     <% end %>
+  </H1>
 
-    <% if ! @politician.google.empty? %>
-      <td>
-        <a href=https://plus.google.com/<%= @politician.google %>/posts><img src=/g+-logo.png></a>
-      </td>
-    <% end %>
-  
-    <% if ! @politician.twitter.empty? %>
-      <td>
-        <a href=https://twitter.com/<%= @politician.twitter %>><img src=/twitter-logo.png></a>
-      </td>
-    <% end %>
-    </tr>
-  </table>
-<% end %>
+  <%= render "show_body_table" %>
 
-</td>
-
-<!--  Second Table Column     -->
-
-<td>
-<% if ! defined?(@politician.wikipedia_link.empty?) %> 
-<% elsif ! @politician.wikipedia_link.empty? %>
-  <p>
-    <center><strong><a href=https://en.wikipedia.org/wiki/<%= @politician.wikipedia_link %>>Wikipedia Page</a></strong></center>
-  </p>
-<% end %>
-
-<% if ! defined?(@politician.campaign_link.empty?) %> 
-<% elsif ! @politician.campaign_link.empty? %>
-  <p>
-    <center><strong>Campaign Page: <a href=<%= @politician.campaign_link %>><%= @politician.campaign_link %></a></strong></center>
-  </p>
-<% end %>
-<% if ! defined?(@politician.open_secrets_link.empty?) %> 
-<% elsif ! @politician.open_secrets_link.empty? %>
-  <p>
-    <center><strong><a href=https://www.opensecrets.org/politicians/summary.php?cid=<%= @politician.open_secrets_link %>>Open Secrets Page</a></strong></center>
-  </p>
-<% end %>
-
-<% if ! defined?(@politician.wikipedia_link.empty?) %> 
-<% elsif ! @politician.wikipedia_link.empty? %>
-  <p>
-    <strong>Official Page: <a href=<%= @politician.official_link %>><%= @politician.official_link %></a></strong>
-  </p>
-<% end %> 
-
-<p>
-  <strong>Country:</strong>
-  <%= @politician.country %>
-  
-  <strong>State:</strong>
-  <%= @politician.state %>
-  
-  <% if defined?(@politician.county.length) %>
-    <% if @politician.county.length > 0 %>
-      <strong>County:</strong>
-      <%= @politician.county %>
-    <% end %>
-  <% end %>
-  
-  <% if defined?(@politician.city.length) %>
-    <% if @politician.city.length > 0 %>
-      <strong>City:</strong>
-      <%= @politician.city %>
-    <% end %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Current Office:</strong>
-  <%= @politician.current_office %>
-</p>
-
-<p>
-  <strong>Candidate For:</strong>
-  <%= @politician.candidate_for %>
-</p>
-
-<p>
-  <table><td><strong>Last Edit by:</strong></td>
-  <td><%= @politician.last_edit_user.html_safe %></td></table>
-</p>
-</td></tr></table>
 <center>
   <table cellspacing=10><tr>
     <td>

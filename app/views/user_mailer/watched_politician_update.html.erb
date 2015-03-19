@@ -1,0 +1,12 @@
+<%= render "html_header" %>
+
+<H1 align=center>
+  <a href=<%= politician_url(@politician) %>><%= @politician.first_name %> <%= @politician.last_name %>'s Page</a> was Updated!
+</H1>
+
+<%= render "politicians/show_body_table" %>
+
+<p>To see the edit <a href=<%= politician_url(@politician) %>>visit their page</a>.</p>
+ 
+<%= render "html_footer" %>
+
