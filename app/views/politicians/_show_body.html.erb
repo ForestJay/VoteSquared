@@ -1,8 +1,7 @@
 <title><%= @politician.first_name %> <%= @politician.last_name %>'s Ratings</title>
   <H1 align=center>
     <%= @politician.first_name %> <%= @politician.last_name %> 
-    <% if user_signed_in? %>
-    <% elsif @politician.already_watching?(@politician, current_user.id) %> 
+    <% if @politician.already_watching?(@politician, current_user.id) %> 
       <%= link_to(raw("<img src=/Unwatch.png alt='watch' align=right>"), politician_watches_path(@politician), :method => :create) %>
     <% else %>
       <%= link_to(raw("<img src=/watch.png alt='watch' align=right>"), politician_watches_path(@politician), :method => :create) %>

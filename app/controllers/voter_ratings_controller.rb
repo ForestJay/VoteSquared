@@ -10,6 +10,13 @@ class VoterRatingsController < ApplicationController
     flash[:notice] = "Thank you, you've earned 5 points!"
     
     @voter_rating.save
+    @politician.watches.each do |watch|
+      user = User.find(watch.watcher_id)
+      puts user
+      unless user.unsubscribe_all
+         UserMailer.watched_politician_new_rating(@politician, @voter_rating, user).deliver
+       end
+    end
     redirect_to politician_path(@politician)
   end
 

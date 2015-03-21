@@ -10,25 +10,8 @@
       <%= link_to(raw("<img src=/DownVote.png alt='not useful'>"), politician_voter_rating_votes_path(@politician,voter_rating), :method => :down_vote) %>
     </td>
     <td>
-      <%= voter_rating.rating_html %>
-      <p>
-        <strong>Pros:</strong>
-        <%= voter_rating.pros %>
-      </p>
-      <p>
-        <strong>Cons:</strong>
-        <%= voter_rating.cons %>
-      </p>
-      <% if voter_rating.voter %>
-        <strong>This rating is from a voter who was promised:</strong><br>
-          <%= voter_rating.promised %>
-        </p>
-        <p>
-          <strong>Felt the politician achieved:</strong><br>
-          <%= voter_rating.achieved %>
-        </p>
-      <% end %>
-        <%= voter_rating.user_display.html_safe %>
+      
+      <%= render "voter_ratings/show_rating_detail", :voter_rating => voter_rating %>
   
       <% if user_signed_in? && current_user.id == voter_rating.user_id %>
         <% has_rating = true %>
