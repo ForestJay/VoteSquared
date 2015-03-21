@@ -1,0 +1,16 @@
+
+# The size restriction is too small
+LineLength:
+  Enabled: false
+
+# It is better to have readable code than to have comments
+Documentation:
+  Enabled: false
+
+# Length is okay, lets just keep the complexity in check
+MethodLength:
+  Enabled: false
+
+# This is too intense!  Have to keep in check manually.
+AbcSize:
+  Enabled: false

@@ -1,7 +1,7 @@
 <%= render "shared/top" %>
 <title><%= @user.name %>'s Profile</title>
 <% if user_signed_in? %>
-  <% if current_user.is_admin or current_user.id == @user.id %>
+  <% if current_user.admin? or current_user.id == @user.id %>
     <center><%= link_to 'Edit', edit_user_path(@user) %></center>
   <% end %>
 <% end %>

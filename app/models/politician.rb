@@ -34,8 +34,8 @@ class Politician
 
   validates :last_edit_user_id, presence: true,
                       length: { minimum: 2 }
-  validates :city, :presence => true, :if => :town_or_city_office?
-  validates :county, :presence => true, :if => :county_office?
+  validates :city, presence: true, if: :town_or_city_office?
+  validates :county, presence: true, if: :county_office?
   
   def town_or_city_office?
     if is_office?('city')

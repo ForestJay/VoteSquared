@@ -2,7 +2,7 @@
 <h1><img src=<%= @user.image %> align=center> Editing <%= @user.name %>'s Profile</h1>
 
 <%= form_for :users, method: :patch do |f| %>
-  <% if current_user.is_admin %>
+  <% if current_user.admin? %>
     <%= f.label :sponsor %>
     <%= f.check_box :sponsor, {checked: @user.sponsor} %>
   <% end %>
