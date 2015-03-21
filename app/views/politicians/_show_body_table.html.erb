@@ -16,19 +16,19 @@
     <tr>
     <% if ! @politician.facebook.empty? %>
       <td>
-        <a href=https://www.facebook.com/<%= @politician.facebook %>><img alt="facebook" src=/fb-logo.png></a>
+        <a href=https://www.facebook.com/<%= @politician.facebook %>><img alt="facebook" src=http://VoteSquared.org/fb-logo.png></a>
       </td>
     <% end %>
 
     <% if ! @politician.google.empty? %>
       <td>
-        <a href=https://plus.google.com/<%= @politician.google %>/posts><img src=/g+-logo.png></a>
+        <a href=https://plus.google.com/<%= @politician.google %>/posts><img alt="Google+" src=http://VoteSquared.org/g+-logo.png></a>
       </td>
     <% end %>
   
     <% if ! @politician.twitter.empty? %>
       <td>
-        <a href=https://twitter.com/<%= @politician.twitter %>><img src=/twitter-logo.png></a>
+        <a href=https://twitter.com/<%= @politician.twitter %>><img alt="Twitter" src=http://VoteSquared.org/twitter-logo.png></a>
       </td>
     <% end %>
     </tr>
