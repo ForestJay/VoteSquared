@@ -38,6 +38,8 @@ United States of America:
   # Town Positions
   Town Counselor:
     level: "town"
+  Selectman:
+    level: "town"
   
   # City Positions
   City Counselor:
