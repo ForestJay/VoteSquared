@@ -6,6 +6,7 @@ VoteSquared::Application.routes.draw do
   end
 
   resources :users do
+    resources :follows
     resources :voter_ratings
   end
 

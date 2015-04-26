@@ -2,7 +2,7 @@
   <H1 align=center>
     <%= @politician.first_name %> <%= @politician.last_name %> 
     <% if user_signed_in? && @politician.already_watching?(@politician, current_user.id) %> 
-      <%= link_to(raw("<img src=/Unwatch.png alt='watch' align=right>"), politician_watches_path(@politician), :method => :create) %>
+      <%= link_to(raw("<img src=/Unwatch.png alt='unwatch' align=right>"), politician_watches_path(@politician), :method => :create) %>
     <% else %>
       <%= link_to(raw("<img src=/Watch.png alt='watch' align=right>"), politician_watches_path(@politician), :method => :create) %>
     <% end %>

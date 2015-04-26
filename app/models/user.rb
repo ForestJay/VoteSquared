@@ -6,6 +6,7 @@ class User
   many :voter_ratings
   many :votes
   many :watches
+  many :follows
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -86,6 +87,13 @@ class User
   def admin?
     return true if id.to_s == ADMINS[id.to_s].to_s
 
+    false
+  end
+
+  def already_following?(user, user_id)
+    user.follows.each do |follow|
+      return follow if follow.follower_id == user_id
+    end
     false
   end
 end

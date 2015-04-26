@@ -6,6 +6,11 @@
   <% end %>
 <% end %>
 <H1><%= @user.name %></H1> <img src=<%= @user.image %>>
+<% if user_signed_in? && @user.already_following?(@user, current_user.id) %> 
+  <%= link_to(raw("<img src=/Unfollow.png alt='unfollow' align=right>"), user_follows_path(@user), :method => :create) %>
+<% else %>
+  <%= link_to(raw("<img src=/Follow.png alt='follow' align=right>"), user_follows_path(@user), :method => :create) %>
+<% end %>
 <p>
   <strong>Points:</strong> <%= @user.points %>
 </p>
