@@ -37,17 +37,26 @@ class PoliticiansController < ApplicationController
 
     if @politician.update_attributes(politician_params)
       redirect_to @politician
+      recipients = []
       @politician.watches.each do |watch|
-        user = User.find(watch.watcher_id)
-        unless user.unsubscribe_all
-          UserMailer.watched_politician_update(@politician, user).deliver
-        end
+        send_mail(watch.watcher_id)
+        recipients += [watch.watcher_id]
+      end
+      current_user.follows.each do |follow|
+        send_mail(follow.follower_id) unless recipients.include?(follow.follower_id)
       end
     else
       render 'edit'
     end
   end
-
+  
+  def send_mail(user_id)
+    user = User.find(user_id)
+    unless user.unsubscribe_all
+      UserMailer.watched_politician_update(@politician, user).deliver
+    end
+  end
+  
   def destroy
     @politician = Politician.find(params[:id])
     @politician.destroy

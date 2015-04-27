@@ -1,7 +1,7 @@
 <%= render "html_header" %>
 
 <H1 align=center>
-  <a href=<%= politician_url(@politician) %>><%= @politician.first_name %> <%= @politician.last_name %>'s Page</a> was Updated!
+  <a href=<%= politician_url(@politician) %>><%= @politician.first_name %> <%= @politician.last_name %>'s Page</a> was Updated by <%= @user.name %>!
 </H1>
 
 <%= render "politicians/show_body_table" %>

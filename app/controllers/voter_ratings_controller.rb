@@ -10,13 +10,22 @@ class VoterRatingsController < ApplicationController
     flash[:notice] = "Thank you, you've earned 5 points!"
 
     @voter_rating.save
+    recipients = []
     @politician.watches.each do |watch|
-      user = User.find(watch.watcher_id)
-      unless user.unsubscribe_all
-        UserMailer.watched_politician_new_rating(@politician, @voter_rating, user).deliver
-      end
+      send_mail(watch.watcher_id)
+      recipients += [watch.watcher_id]
+    end
+    current_user.follows.each do |follow|
+      send_mail(follow.follower_id) unless recipients.include?(follow.follower_id)
     end
     redirect_to politician_path(@politician)
+  end
+  
+  def send_mail(user_id)
+    user = User.find(user_id)
+    unless user.unsubscribe_all
+      UserMailer.watched_politician_new_rating(@politician, @voter_rating, user).deliver
+    end
   end
 
   def destroy
