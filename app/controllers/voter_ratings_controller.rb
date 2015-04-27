@@ -24,7 +24,7 @@ class VoterRatingsController < ApplicationController
   def send_mail(user_id)
     user = User.find(user_id)
     unless user.unsubscribe_all
-      UserMailer.watched_politician_new_rating(@politician, @voter_rating, user).deliver
+      UserMailer.watched_politician_new_rating(@politician, @voter_rating, user, current_user).deliver
     end
   end
 
