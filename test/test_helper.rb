@@ -8,16 +8,14 @@ class ActiveSupport::TestCase
 
   # Drop all collections after each test case.
   def teardown
-    MongoMapper.database.collections.each do |coll|
-      coll.remove
+    MongoMapper.database.collections.each(&:remove)
+  end
+
+  # Make sure that each test case has a teardown
+  # method to clear the db after each test.
+  def inherited(base)
+    base.define_method :teardown do
+      super
     end
   end
- 
- # Make sure that each test case has a teardown
- # method to clear the db after each test.
- def inherited(base)
-   base.define_method :teardown do
-     super
-   end
- end
 end

@@ -1,4 +1,4 @@
-EMAIL = YAML.load(File.read(File.expand_path("config/initializers/secrets.yml")))["email"]
+EMAIL = YAML.load(File.read(File.expand_path('config/initializers/secrets.yml')))['email']
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -22,7 +22,7 @@ Rails.application.configure do
   config.active_support.deprecation = :log
 
   # Raise an error on page load if there are pending migrations.
-  #config.active_record.migration_error = :page_load
+  # config.active_record.migration_error = :page_load
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
@@ -38,11 +38,11 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              EMAIL["address"],
-    port:                 EMAIL["port"],
-    domain:               EMAIL["domain"],
-    user_name:            EMAIL["user_name"],
-    password:             EMAIL["password"],
-    authentication:       EMAIL["authentication"],
-    enable_starttls_auto: EMAIL["enable_starttls_auto"]  }
+    address:              EMAIL['address'],
+    port:                 EMAIL['port'],
+    domain:               EMAIL['domain'],
+    user_name:            EMAIL['user_name'],
+    password:             EMAIL['password'],
+    authentication:       EMAIL['authentication'],
+    enable_starttls_auto: EMAIL['enable_starttls_auto']  }
 end

@@ -11,16 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811230238) do
-
-  create_table "politicians", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "country"
-    t.string   "state"
-    t.string   "current_office"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+ActiveRecord::Schema.define(version: 20_140_811_230_238) do
+  create_table 'politicians', force: true do |t|
+    t.string 'first_name'
+    t.string 'last_name'
+    t.string 'country'
+    t.string 'state'
+    t.string 'current_office'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
-
 end

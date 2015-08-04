@@ -49,14 +49,14 @@ class PoliticiansController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def send_mail(user_id)
     user = User.find(user_id)
     unless user.unsubscribe_all
       UserMailer.watched_politician_update(@politician, user, current_user).deliver
     end
   end
-  
+
   def destroy
     @politician = Politician.find(params[:id])
     @politician.destroy

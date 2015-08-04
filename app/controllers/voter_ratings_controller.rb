@@ -20,7 +20,7 @@ class VoterRatingsController < ApplicationController
     end
     redirect_to politician_path(@politician)
   end
-  
+
   def send_mail(user_id)
     user = User.find(user_id)
     unless user.unsubscribe_all
