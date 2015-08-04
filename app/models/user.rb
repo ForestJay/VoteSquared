@@ -31,6 +31,7 @@ class User
   key :points, Integer
   key :sponsor, Boolean, default: false
   key :unsubscribe_all, Boolean, default: false
+  key :unsubscribe_useful, Boolean, default: false
 
   validates :name, presence: true,
                    length: { minimum: 2 }

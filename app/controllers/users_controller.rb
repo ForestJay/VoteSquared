@@ -42,6 +42,7 @@ class UsersController < ApplicationController
 
     if current_user.admin? || current_user.id == @user.id
       @user.unsubscribe_all = true?(params['users']['unsubscribe_all'])
+      @user.unsubscribe_useful = true?(params['users']['unsubscribe_useful'])
     end
 
     if @user.save!

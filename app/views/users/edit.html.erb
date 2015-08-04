@@ -9,7 +9,9 @@
   
   <h2>Email:</h2>
   <%= f.label :unsubscribe_all %>
-  <%= f.check_box :unsubscribe_all, {checked: @user.unsubscribe_all} %>
+  <%= f.check_box :unsubscribe_all, {checked: @user.unsubscribe_all} %><br>
+  <%= f.label :unsubscribe_useful %>
+  <%= f.check_box :unsubscribe_useful, {checked: @user.unsubscribe_useful} %>
   
   <p>
     <%= f.submit %>

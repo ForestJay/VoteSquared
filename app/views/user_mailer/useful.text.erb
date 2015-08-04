@@ -1,0 +1,11 @@
+Your rating of <%= @politician.full_name %> was voted <% if ! @useful %> not <% end %> useful by <%= @current_user.name %></a>!<p>
+
+ <% if @useful %>
+   Congratulations, you've earned 1 point!
+ <% else %>
+   You might want to review your rating to see if it can be improved.
+ <% end %>
+
+<%= politician_url(@politician) %>
+ 
+<%= render "text_footer" %>

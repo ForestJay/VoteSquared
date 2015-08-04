@@ -1,0 +1,23 @@
+<%= render "html_header" %>
+
+<H1 align=center>
+  Your rating of <a href=<%= politician_url(@politician) %>><%= @politician.full_name %> was voted 
+  <% if ! @useful %>
+    not 
+  <% end %>
+  useful by <%= @current_user.name %></a>!<p>
+</H1>
+
+<p>
+  <% if @useful %>
+    Congratulations, you've earned 1 point!
+  <% else %>
+    You might want to review your rating to see if it can be improved.
+  <% end %>
+</p>
+
+<%= render "voter_ratings/show_rating_detail", :voter_rating => @voter_rating %>
+
+<p>To see the rating <a href=<%= politician_url(@politician) %>>visit here</a>.</p>
+ 
+<%= render "html_footer" %>

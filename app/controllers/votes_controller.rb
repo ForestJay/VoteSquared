@@ -11,8 +11,11 @@ class VotesController < ApplicationController
     else
       @vote = @voter_rating.votes.create
       @vote.user_id = current_user.id
-
-      @vote.useful = useful?(params[:_method], @voter_rating)
+      rating_user = User.find(@voter_rating.user_id)
+      @vote.useful = useful?(params[:_method], @voter_rating, rating_user)
+      unless rating_user.unsubscribe_all || rating_user.unsubscribe_useful
+        UserMailer.useful(@voter_rating.politician, @voter_rating, rating_user, current_user, @vote.useful).deliver
+      end
 
       flash[:notice] = "Thank you for your feedback on #{@voter_rating.user_name}'s rating!"
       @vote.save
@@ -21,9 +24,8 @@ class VotesController < ApplicationController
     redirect_to politician_path(@voter_rating.politician) if user_signed_in?
   end
 
-  def useful?(method_param, voter_rating)
+  def useful?(method_param, _voter_rating, rating_user)
     if method_param == 'up_vote'
-      rating_user = User.find(voter_rating.user_id)
       rating_user.add_points(1)
       return true
     end
