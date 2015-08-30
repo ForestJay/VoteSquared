@@ -1,0 +1,10 @@
+{
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name" : "Vote Squared",
+    "url": "http://VoteSquared.org/",
+    "logo": "http://votesquared.org/Logo.png",
+    "sameAs" : [ "http://www.facebook.com/votesquared",
+    	"http://www.twitter.com/VoteSquared",
+    	"http://plus.google.com/+VotesquaredOrg"]
+}
