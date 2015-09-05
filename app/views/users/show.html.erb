@@ -5,26 +5,30 @@
     <center><%= link_to 'Edit', edit_user_path(@user) %></center>
   <% end %>
 <% end %>
-<H1><%= @user.name %></H1> <img src=<%= @user.image %>>
-<% if user_signed_in? && @user.already_following?(@user, current_user.id) %> 
-  <%= link_to(raw("<img src=/Unfollow.png alt='unfollow' align=right>"), user_follows_path(@user), :method => :create) %>
-<% else %>
-  <%= link_to(raw("<img src=/Follow.png alt='follow' align=right>"), user_follows_path(@user), :method => :create) %>
-<% end %>
-<p>
-  <strong>Points:</strong> <%= @user.points %>
-</p>
-<p>
-  <strong>Last Login:</strong> <%= @user.last_sign_in_at %>
-</p>
-<p>
-  <strong>Login Count:</strong> <%= @user.sign_in_count %>
-</p>
+<span class="vcard">
+  <H1 class='fn'><%= @user.name %></H1> <img class='photo' src=<%= @user.image %>>
+	<% if user_signed_in? && @user.already_following?(@user, current_user.id) %> 
+	  <%= link_to(raw("<img src=/Unfollow.png alt='unfollow' align=right>"), user_follows_path(@user), :method => :create) %>
+	<% else %>
+	  <%= link_to(raw("<img src=/Follow.png alt='follow' align=right>"), user_follows_path(@user), :method => :create) %>
+	<% end %>
+	<p>
+	  <strong>Points:</strong> <%= @user.points %>
+	</p>
+	<p>
+	  <strong>Last Login:</strong> <%= @user.last_sign_in_at %>
+	</p>
+	<p>
+	  <strong>Login Count:</strong> <%= @user.sign_in_count %>
+	</p>
+</span>
 <strong>User's Ratings:</strong>
 <table cellspacing=20 border=1>
   <% @user.voter_ratings.each do |voter_rating| %>
-    <tr><td align=center>
-      <%= voter_rating.politician_link.html_safe %> <br>
+    <tr class='hreview'>
+      <span style='visibility:hidden'><span class='reviewer'><%= @user.name %></span></span>
+      <td align=center>
+      <span class="item"><span class='fn'><%= voter_rating.politician_link.html_safe %></span></span> <br>
       <%= voter_rating.rating_html %>
     </td></tr>
   <% end %>

@@ -134,10 +134,10 @@ class Politician
       avg += 1
     end
 
-    str = "<b class='rating'>" + rating_avg.to_s + '</b>'
+    str = "<table><td valign=center><b class='rating'>" + rating_avg.to_s + '</b></td><td>'
     str += rating_hearts_html(avg, half)
     str += " (<span class='count'>" + voter_ratings.count.to_s
-    str += '</span> ' + 'rating'.pluralize(voter_ratings.count) + ')'
+    str += '</span> ' + 'rating'.pluralize(voter_ratings.count) + ')</td></table>'
 
     str.html_safe
   end
