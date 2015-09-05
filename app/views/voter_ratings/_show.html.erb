@@ -3,7 +3,8 @@
 <% sorted_voters = @politician.voter_ratings.sort! { |a,b| b.total_votes <=> a.total_votes } %>
 <% sorted_voters.each do |voter_rating| %> 
   <hr>
-  <table>
+  <table class='hreview'>
+  <span class="item" style='visibility:hidden'><span class="fn"><%= @politician.full_name %></span></span>
     <td>
       <%= link_to(raw("<img src=/UpVote.png alt='useful'>"), politician_voter_rating_votes_path(@politician,voter_rating), :method => :up_vote) %>
       <center><strong><%= voter_rating.total_votes %></strong></center>

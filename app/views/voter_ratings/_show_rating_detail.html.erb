@@ -1,12 +1,14 @@
 <%= voter_rating.rating_html %>
-<p>
-  <strong>Pros:</strong>
-  <%= voter_rating.pros %>
-</p>
-<p>
-  <strong>Cons:</strong>
-  <%= voter_rating.cons %>
-</p>
+<span class='description'>
+  <p>
+    <strong>Pros:</strong>
+    <%= voter_rating.pros %>
+  </p>
+  <p>
+    <strong>Cons:</strong>
+    <%= voter_rating.cons %>
+  </p>
+</span>
 
 <% if voter_rating.voter %>
   <strong>This rating is from a voter who was promised:</strong><br>
@@ -18,4 +20,4 @@
   </p>
 <% end %>
 
-<%= voter_rating.user_display.html_safe %>
+<span class='reviewer'><%= voter_rating.user_display.html_safe %></span>

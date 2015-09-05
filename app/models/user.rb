@@ -74,8 +74,9 @@ class User
       @points = 0
       self.save!
     end
-    return_value = "<table><tr><td align=center><img src=#{image}></td><td><table><tr>"
-    return_value += "<td><a href=/users/#{id}>#{@name}</a></tr></td><tr><td align=center>#{@points}"
+    return_value = "<table class='vcard'><tr><td align=center><img class='photo' src=#{image}></td><td>"
+    return_value += "<table><tr><td class='fn'><a class='url' href=/users/#{id}>#{@name}</a></td></tr>"
+    return_value += "<tr><td align=center>#{@points}"
 
     if @sponsor == true
       return_value += " <img src=http://votesquared.org/Halo.png width=12 height=12 alt='Sponsor Halo'>"

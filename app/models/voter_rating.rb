@@ -26,7 +26,8 @@ class VoterRating
                      presence: true, length: { maximum: 1 }
 
   def rating_html
-    rating_hearts_html(@rating, false).html_safe
+    html = "<b class='rating'>" + @rating.to_s + "</b> " + rating_hearts_html(@rating, false)
+    html.html_safe
   end
 
   def user_display
