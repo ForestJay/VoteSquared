@@ -1,6 +1,10 @@
 <title><%= @politician.first_name %> <%= @politician.last_name %>'s Ratings</title>
+
+<span class="vcard">
   <H1 align=center class='item'>
-    <span class='fn'><%= @politician.first_name %> <%= @politician.last_name %></span>'s Ratings
+    <span class='fn'>
+      <span class="given-name"><%= @politician.first_name %></span> 
+      <span class="family-name"><%= @politician.last_name %></span></span>'s Ratings
     <% if user_signed_in? && @politician.already_watching?(@politician, current_user.id) %> 
       <%= link_to(raw("<img src=/Unwatch.png alt='unwatch' align=right>"), politician_watches_path(@politician), :method => :create) %>
     <% else %>
@@ -9,6 +13,7 @@
   </H1>
 
   <%= render "show_body_table" %>
+</span>
 
 <center>
   <table cellspacing=10><tr>

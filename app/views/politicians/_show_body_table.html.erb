@@ -9,7 +9,7 @@
   <table>
     <th colspan=3>
         <% if ! @politician.facebook.empty? %>
-          <img src=http://graph.facebook.com/<%= @politician.facebook %>/picture?type=square><br>
+          <img class='photo' src=http://graph.facebook.com/<%= @politician.facebook %>/picture?type=square><br>
       <% end %>
       Social Links
     </th>
@@ -50,7 +50,7 @@
 <% if ! defined?(@politician.campaign_link.empty?) %> 
 <% elsif ! @politician.campaign_link.empty? %>
   <p>
-    <center><strong>Campaign Page: <a href=<%= @politician.campaign_link %>><%= @politician.campaign_link %></a></strong></center>
+    <center><strong>Campaign Page: <a class='url' href=<%= @politician.campaign_link %>><%= @politician.campaign_link %></a></strong></center>
   </p>
 <% end %>
 <% if ! defined?(@politician.open_secrets_link.empty?) %> 
@@ -69,10 +69,10 @@
 
 <p>
   <strong>Country:</strong>
-  <%= @politician.country %>
+  <span class="country-name"><%= @politician.country %></span>
   
   <strong>State:</strong>
-  <%= @politician.state %>
+  <abbr class='region'><%= @politician.state %></abbr>
   
   <% if defined?(@politician.county.length) %>
     <% if @politician.county.length > 0 %>
@@ -84,14 +84,14 @@
   <% if defined?(@politician.city.length) %>
     <% if @politician.city.length > 0 %>
       <strong>City:</strong>
-      <%= @politician.city %>
+      <span class='locality'><%= @politician.city %></span>
     <% end %>
   <% end %>
 </p>
 
 <p>
   <strong>Current Office:</strong>
-  <span itemprop='jobTitle' itemtype='http://schema.org/Person' itemprop='name'><%= @politician.current_office %></span>
+  <span class='category'><%= @politician.current_office %></span>
 </p>
 
 <p>
