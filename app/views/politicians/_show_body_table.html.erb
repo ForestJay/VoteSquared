@@ -91,7 +91,7 @@
 
 <p>
   <strong>Current Office:</strong>
-  <%= @politician.current_office %>
+  <span itemprop='jobTitle' itemtype='http://schema.org/Person' itemprop='name'><%= @politician.current_office %></span>
 </p>
 
 <p>
@@ -101,6 +101,6 @@
 
 <p>
   <table><td><strong>Last Edit by:</strong></td>
-  <td><%= @politician.last_edit_user.html_safe %></td></table>
+  <td><span itemprop="author" itemscope itemtype="http://schema.org/Person"><%= @politician.last_edit_user.html_safe %></span></td></table>
 </p>
 </td></tr></table>

@@ -117,7 +117,7 @@ class Politician
 
   def rating_stats_html
     if voter_ratings.none?
-      return '0 ratings'
+      return "(<span class='count'>0</span> ratings)".html_safe
     end
 
     avg = rating_avg
@@ -134,9 +134,10 @@ class Politician
       avg += 1
     end
 
-    str = rating_hearts_html(avg, half)
-    str += ' ' + voter_ratings.count.to_s
-    str += ' ' + 'rating'.pluralize(voter_ratings.count)
+    str = "<b class='rating'>" + rating_avg.to_s + '</b>'
+    str += rating_hearts_html(avg, half)
+    str += " (<span class='count'>" + voter_ratings.count.to_s
+    str += '</span> ' + 'rating'.pluralize(voter_ratings.count) + ')'
 
     str.html_safe
   end

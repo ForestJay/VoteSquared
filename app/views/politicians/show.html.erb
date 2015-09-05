@@ -5,7 +5,9 @@
   <H1>This is not the politician you are looking for.  They must have performed a Jedi mind trick!</H1>
   <p>Try heading back to the <%= link_to 'list of politicians', politicians_path %>!</p>
 <% else %>
-  <%= render "show_body" %>
+  <span class="hreview-aggregate">
+    <%= render "show_body" %>
+  </span>
   <%= render "voter_ratings/show" %>
 <% end %>
 <p>

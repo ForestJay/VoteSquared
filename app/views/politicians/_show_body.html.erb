@@ -1,6 +1,6 @@
 <title><%= @politician.first_name %> <%= @politician.last_name %>'s Ratings</title>
-  <H1 align=center>
-    <%= @politician.first_name %> <%= @politician.last_name %>'s Ratings
+  <H1 align=center class='item'>
+    <span class='fn'><%= @politician.first_name %> <%= @politician.last_name %></span>'s Ratings
     <% if user_signed_in? && @politician.already_watching?(@politician, current_user.id) %> 
       <%= link_to(raw("<img src=/Unwatch.png alt='unwatch' align=right>"), politician_watches_path(@politician), :method => :create) %>
     <% else %>
