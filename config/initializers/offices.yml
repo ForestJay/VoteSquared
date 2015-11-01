@@ -48,3 +48,37 @@ United States of America:
     level: "city"
   School Committee:
     level: "city"
+    
+Canada:
+  N/A:
+  
+  # Federal Positions
+  Monarch:
+    level: "federal"
+  Member of Parliament:
+    level: "federal"
+  Prime Minister:
+    level: "federal"
+  Governor General:
+    level: "federal"
+  Supreme Court Justice:
+    level: "federal"
+  Senator:
+    level: "federal"
+    
+  # Provincial Positions
+  Member of Provincial Parliament:
+    level: "provincial"
+  Member of the National Assembly:
+    level: "provincial"
+  Member of the House of Assembly:
+    level: "provincial"
+  Member of the Legislative Assembly:
+    level: "provincial"
+  Premier:
+    level: "provincial"
+  
+  # City Positions
+  Mayor:
+    level: "city"
+  
