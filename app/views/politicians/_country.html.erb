@@ -1,0 +1,29 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Rating</th>
+    <th>Country</th>
+    <th>State</th>
+    <th>Current Office</th>
+    <th>Candidate For</th>
+  </tr>
+ 
+  <% row = 0 %>
+  <% sorted_politicians = @politicians.sort! { |a,b| b.sort_value <=> a.sort_value } %>
+  <% @politicians.each do |politician| %>
+    <% if politician.country == country %>
+      <% if (row += 1) % 2 == 0 %>
+        <tr bgcolor=aquamarine>
+      <% else %>
+        <tr>
+      <% end %>
+      <td><%= link_to politician.full_name, politician_path(politician) %></td>
+      <td><%= politician.rating_stats_html %></td>
+      <td><%= politician.country %></td>
+      <td><%= politician.state %></td>
+      <td><%= politician.current_office %></td>
+      <td><%= politician.candidate_for %></td>
+        </tr>
+    <% end %>
+  <% end %>
+</table>

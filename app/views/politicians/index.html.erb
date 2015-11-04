@@ -1,34 +1,38 @@
 <%= render "shared/top" %>
 <title>Politician Listing</title>
 <h1>Listing politicians</h1>
+
+  <input type="radio" id="send_poll" name="country" value="USA" />USA      
+  <input type="radio" id="send_poll" name="country" value="Canada" />Canada<br/>
+
+<script>
+$(document).ready(function(){
+
+    $("#USA").hide();
+    $("#Canada").hide();
+
+    $("input:radio[name='country']").change(function(){  
+
+            if(this.value == 'USA' && this.checked){
+              $("#USA").show();
+              $("#Canada").hide();
+            }
+            else if(this.value == 'Canada' && this.checked){
+                $("#Canada").show();
+                $("#USA").hide();
+            }
+
+    });
+
+});
+</script>
  
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Rating</th>
-    <th>Country</th>
-    <th>State</th>
-    <th>Current Office</th>
-    <th>Candidate For</th>
-  </tr>
- 
-  <% row = 0 %>
-  <% sorted_politicians = @politicians.sort! { |a,b| b.sort_value <=> a.sort_value } %>
-  <% @politicians.each do |politician| %>
-      <% if (row += 1) % 2 == 0 %>
-        <tr bgcolor=aquamarine>
-      <% else %>
-        <tr>
-      <% end %>
-      <td><%= link_to politician.full_name, politician_path(politician) %></td>
-      <td><%= politician.rating_stats_html %></td>
-      <td><%= politician.country %></td>
-      <td><%= politician.state %></td>
-      <td><%= politician.current_office %></td>
-      <td><%= politician.candidate_for %></td>
-    </tr>
-  <% end %>
-</table>
+<div id='USA' style='display:none'>
+  <%= render 'country', :country => 'United States of America' %>
+</div>
+<div id='Canada' style='display:none'>
+  <%= render 'country', :country => 'Canada' %>
+</div>
 
 <p><center>
 <% if user_signed_in? %>
@@ -38,4 +42,4 @@
 <% end %>
 </center>
 
-<%= render "shared/bottom" %>
+<%= render 'shared/bottom' %>
