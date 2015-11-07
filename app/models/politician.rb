@@ -55,13 +55,17 @@ class Politician
   end
 
   def is_office?(office)
-    if @current_office.length == 0
-    elsif OFFICES[COUNTRY][@current_office]['level'] == office
+    if @current_office == 'N/A'
+      return false
+    elsif @current_office.length == 0
+    elsif OFFICES[@country][@current_office]['level'] == office
       return true
     end
 
-    if @candidate_for.length == 0
-    elsif OFFICES[COUNTRY][@candidate_for]['level'] == office
+    if @candidate_for == 'N/A'
+      return false
+    elsif @candidate_for.length == 0
+    elsif OFFICES[@country][@candidate_for]['level'] == office
       return true
     end
 
