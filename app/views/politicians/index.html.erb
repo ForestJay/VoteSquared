@@ -34,12 +34,4 @@ $(document).ready(function(){
   <%= render 'country', :country => 'Canada' %>
 </div>
 
-<p><center>
-<% if user_signed_in? %>
-  <%= link_to 'New politician', new_politician_path %>
-<% else %>
-  <%= link_to('Login to Add a Politician', user_omniauth_authorize_path(:facebook))  %>
-<% end %>
-</center>
-
 <%= render 'shared/bottom' %>
