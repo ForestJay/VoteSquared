@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 # Use MongoDB so that we are ready for growth
 require 'rubygems'
 require 'mongo'
-source 'http://gemcutter.org'
 
 # Gems for FB:
 gem 'omniauth-facebook'
